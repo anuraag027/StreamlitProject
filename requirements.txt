@@ -21,5 +21,4 @@ pyOpenSSL==22.0.0
 scikit_learn==1.0.2
 seaborn==0.11.1
 soccerplots==1.0.0
-wincertstore==0.2.1
 xmlrpclib==1.0.1
