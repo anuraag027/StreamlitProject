@@ -18,7 +18,6 @@ pandas==1.0.5
 Pillow==9.1.0
 protobuf==3.20.1
 pyOpenSSL==22.0.0
-pywin32==227
 scikit_learn==1.0.2
 seaborn==0.11.1
 soccerplots==1.0.0
