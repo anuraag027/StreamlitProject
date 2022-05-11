@@ -89,7 +89,7 @@ def plot_radar(bkup,df,n):
     plt.title(temp_str,color='black',size=20,fontfamily='Candara')
     st.write(fig)
     
-df = pd.read_csv('D:\\Data Analysis TP\\2021_22\\STREAMLIT Player Suggestor\\FBREF Files for 2022-05-06\\Per 90\\All_stats_combined_with_positions.csv')
+df = pd.read_csv('./All_stats_combined_with_positions.csv')
 
 df = df.iloc[:,3:] #Remove the Unnamed & rank columns
 
