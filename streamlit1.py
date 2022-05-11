@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 # from mplsoccer.pitch import Pitch
 # from urllib.request import urlopen
 import math
+from soccerplots.radar_chart import Radar
 # from matplotlib.colors import to_rgba
 
 # from matplotlib.colors import LinearSegmentedColormap
@@ -69,8 +70,6 @@ def plot_radar(bkup,df,n):
     print(alpha_list)
     
     endnote = 'Twitter: @Anuraag027\nTackles & Interceptions are possession-adjusted\nData from Statsbomb via FBRef'
-    
-    from soccerplots.radar_chart import Radar
 
     radar = Radar()
 
