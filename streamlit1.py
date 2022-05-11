@@ -1,22 +1,22 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import matplotlib as mpl
+# import matplotlib as mpl
 import matplotlib.pyplot as plt
-import seaborn as sns
-import cmasher as cmr
+# import seaborn as sns
+# import cmasher as cmr
 # from mplsoccer.pitch import Pitch
-from urllib.request import urlopen
+# from urllib.request import urlopen
 import math
-from matplotlib.colors import to_rgba
+# from matplotlib.colors import to_rgba
 
-from matplotlib.colors import LinearSegmentedColormap
-from PIL import Image
-from highlight_text import ax_text
+# from matplotlib.colors import LinearSegmentedColormap
+# from PIL import Image
+# from highlight_text import ax_text
 # from mplsoccer import VerticalPitch, add_image, FontManager
 # from mplsoccer.statsbomb import read_event, EVENT_SLUG
-import os
-import glob
+# import os
+# import glob
 # from requirements import *
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
