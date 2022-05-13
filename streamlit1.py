@@ -30,6 +30,9 @@ st.header('Use Machine Learning to Find Similar Players')
 st.caption('Select a player, and my Machine Learning model will suggest players similar to the selected player.')
 st.caption('Made by: Anuraag Kulkarni | Twitter: @Anuraag027')
 
+[theme]
+base="light"
+
 def plot_radar(bkup,df,n):
 #     print("n:",n)
 
