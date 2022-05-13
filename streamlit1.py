@@ -354,17 +354,19 @@ st.caption('The lower the similarity score, the higher the similarity between th
 st.subheader('Description for Metrics Used')
 
 #Look for every column name in above dictionary (key) and print the appropriate description (value)
+cnt = 0
 for ele in try_list:
     for k,v in test_dic.items():
         if ele in k:
+            cnt += 1
             if ele == 'Prog Passes_p90':
-                st.write(ele,':','Progressive Passes per 90')
+                st.write(cnt+'.',ele,':','Progressive Passes per 90')
                 break
             if ele == 'Prog Carries_p90':
-                st.write(ele,':','Progressive Carries per 90')
+                st.write(cnt+'.',ele,':','Progressive Carries per 90')
                 break
             else:
-                st.write(ele,' : ',v)
+                st.write(cnt+'.',ele,' : ',v)
     
 st.caption('Names of players are as taken as provided by Statsbomb on FBRef.com')
 st.caption('Data has been taken from FBRef (Statsbomb): https://fbref.com/en/')
