@@ -338,13 +338,13 @@ test_dic = {
 'Prog Carries_p90 (possession_p90)' : 'Progressive Carries per 90',
 'Passes into Final 1/3_p90 (possession_p90)' : 'Passes into The Final Third per 90',
 'Press_p90 (passing_types_p90)' : 'Passes Made Under Pressure per 90',
-'Sh_p90 (defense_Padj_p90)' : 'Shots Blocked per 90',
+'Shots Blocked_p90 (defense_Padj_p90)' : 'Shots Blocked per 90',
 'Prog Passes_p90 per 50 passes (possession_p90)' : 'Progressive Passes per 50 Completed Passes, per 90',
 'TB_p90 (passing_types_p90)' : 'Through Balls per 90',
 'Passes into Penalty Area_p90 (possession_p90)' : 'Passes Into Penalty Area per 90',
 'KP_p90 (possession_p90)' : 'Key Passes per 90',
 'Sh_p90 (possession_p90)' : 'Shots Taken per 90',
-'npxG/Sh_p90 (shooting_p90)' : 'Non Penalty xG Generated per Shot, per 90',
+'npxG/Shot_p90 (shooting_p90)' : 'Non Penalty xG Generated per Shot, per 90',
 'Clr_p90 (defense_Padj_p90)' : 'Clearances Made per 90'}
 
 st.caption('The lower the similarity score, the higher the similarity between the players. A similarity score of above 4.5 should be taken with a pinch of salt.')
