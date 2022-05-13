@@ -214,7 +214,7 @@ with st.sidebar:
                  'Prog Carries_p90 per 100 touches (possession_p90)',
                  'Prog Passes_p90 per 50 passes (possession_p90)','Passes into Final 1/3_p90 (possession_p90)',
                  'Prog Carries_p90 (possession_p90)','Prog Passes_p90 (possession_p90)','Clr_p90 (defense_Padj_p90)',
-                 'Shots Blocked_p90 (defense_Padj_p90)', 'Pass_p90 (defense_Padj_p90)',
+                 'Shots Blocked_p90 (possession_p90)', 'Pass_p90 (defense_Padj_p90)',
                  'Aerial Win % (possession_p90)','Won_p90 (misc_p90)','True Interceptions_p90 (possession_p90)']]        
     df = df.dropna()
     #Reset index
@@ -338,7 +338,7 @@ test_dic = {
 'Prog Carries_p90 (possession_p90)' : 'Progressive Carries per 90',
 'Passes into Final 1/3_p90 (possession_p90)' : 'Passes into The Final Third per 90',
 'Press_p90 (passing_types_p90)' : 'Passes Made Under Pressure per 90',
-'Shots Blocked_p90 (defense_Padj_p90)' : 'Shots Blocked per 90',
+'Shots Blocked_p90 (possession_p90)' : 'Shots Blocked per 90',
 'Prog Passes_p90 per 50 passes (possession_p90)' : 'Progressive Passes per 50 Completed Passes, per 90',
 'TB_p90 (passing_types_p90)' : 'Through Balls per 90',
 'Passes into Penalty Area_p90 (possession_p90)' : 'Passes Into Penalty Area per 90',
