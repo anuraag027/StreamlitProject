@@ -48,7 +48,7 @@ def plot_radar(bkup,df,n):
             temp = c.split(' ')
             col_str = ''
             for i in range(len(temp)):
-                if (i == 0) or (i == 2) or (i == 4):# or (i == 4):
+                if (i == 0) or (i == 2) or (i == 4):
                     col_str += temp[i] + '\n'
                 else:
                     col_str += temp[i]
@@ -81,7 +81,7 @@ def plot_radar(bkup,df,n):
     colors_list = colors_list[:n]
 
     #List of alphas for every player's chart. Currently keeping as the same
-    alpha_list = [0.8,0.6,0.6,0.6,0.6,0.6]
+    alpha_list = [0.8,0.7,0.7,0.7]
     alpha_list = alpha_list[:n]
 
     endnote = 'Twitter: @Anuraag027'
