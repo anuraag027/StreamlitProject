@@ -205,7 +205,7 @@ with st.sidebar:
                  'Passes into Penalty Area_p90 (possession_p90)','Carries into Penalty Area_p90 (possession_p90)',
                  'xA_p90 (passing_p90)','KP_p90 (possession_p90)','npxG_p90 (shooting_p90)','SCA_p90 (gca_p90)',
                  'Aerial Win % (possession_p90)','Won_p90 (misc_p90)', 'Receiving Prog_p90 (possession_p90)',
-                 'KP_p90 (possession_p90)', 'npxG/Shot (possession_p90)']]
+                 'npxG/Shot (possession_p90)']]
 
     elif pos == 'Centre-Back':
         df = df[['Player','Squad','Age',
