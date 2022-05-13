@@ -202,7 +202,7 @@ with st.sidebar:
                  'Completed Passes_p90 (passing_p90)','Long Cmp_p90 (passing_p90)','Long Att_p90 (passing_p90)',
                  'Prog Passes_p90 per 50 passes (possession_p90)','Passes into Final 1/3_p90 (possession_p90)',
                  'Prog Carries_p90 (possession_p90)','Prog Passes_p90 (possession_p90)','Clr_p90 (defense_Padj_p90)',
-                 'Sh_p90 (defense_Padj_p90)', 'Pass_p90 (defense_Padj_p90)',
+                 'Sh_p90 (defense_Padj_p90)', 'Pass_p90 (defense_Padj_p90)','Prog Carries_p90 per 100 touches (possession_p90)',
                  'Aerial Win % (possession_p90)','Won_p90 (misc_p90)','True Interceptions_p90 (possession_p90)']]
 
     df = df.dropna()
