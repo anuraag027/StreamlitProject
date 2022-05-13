@@ -187,7 +187,7 @@ with st.sidebar:
                  'Prog Carries_p90 per 100 touches (possession_p90)',
                  'Prog Passes_p90 (possession_p90)','Carries into Final 1/3_p90 (possession_p90)',
                  'Passes into Penalty Area_p90 (possession_p90)','xA_p90 (passing_p90)','KP_p90 (possession_p90)',
-                 'TB_p90 (passing_types_p90)']]
+                 'TB_p90 (passing_types_p90)','Receiving Prog_p90 (possession_p90)']]
 
     elif pos == 'Centre-Forward':
         df = df[['Player','Squad','Age','xA_p90 (passing_p90)','Passes into Penalty Area_p90 (possession_p90)',
