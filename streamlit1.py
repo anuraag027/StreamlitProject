@@ -45,6 +45,23 @@ def plot_radar(bkup,df,n):
     for i in range(len(params)):
         new_params.append(params[i].split('(')[0].strip())
     
+    new = []
+    for c in new_params:
+        if len(c.split(' ')) > 3:
+            temp = c.split(' ')
+            col_str = ''
+            for i in range(len(temp)):
+                if i == 1:
+                    col_str += temp[i] + '\n'
+                else:
+                    col_str += temp[i]
+                col_str += ' '
+            new.append(col_str)
+        else:
+            new.append(c)
+
+    new_params = new
+    
     #add ranges to list of tuple pairs
     ranges = []
     values = []
