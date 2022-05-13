@@ -70,7 +70,7 @@ def plot_radar(bkup,df,n):
         a = a - (a*.1)
 
         b = max(df[params][x])
-        b = b + (b*.05)
+        b = b + (b*.1)
 
         ranges.append((a,b))
 
