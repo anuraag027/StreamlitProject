@@ -47,11 +47,11 @@ def plot_radar(bkup,df,n):
     
     new = []
     for c in new_params:
-        if len(c.split(' ')) >= 3:
+        if len(c.split(' ')) >= 2:
             temp = c.split(' ')
             col_str = ''
             for i in range(len(temp)):
-                if (i == 3) or (i == 4):# or (i == 4):
+                if (i == 1) or (i == 2) or (i == 3) or (i == 4):
                     col_str += temp[i] + '\n'
                 else:
                     col_str += temp[i]
