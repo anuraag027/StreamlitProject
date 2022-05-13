@@ -11,36 +11,37 @@ import math
 import warnings
 warnings.filterwarnings('ignore')
 
-# ADDING CACHE OPTIONS
+# ADDING CACHE OPTION
 @st.cache
 def load_data():
     return pd.read_csv('Data/All_stats_combined_with_positions.csv')
 df = load_data()
 
-# @st.cache
-
 st.header('Use Machine Learning to Find Similar Players')
 st.caption('Select a player, and my Machine Learning model will suggest players similar to the selected player.')
-st.caption('Made by: Anuraag Kulkarni | Twitter: @Anuraag027')
+st.caption('Currently works for outfield positions for players from Europe\'s Top 5 Leagues - Premier League, La Liga, Seria A, Ligue 1 and Bundesliga.')
+st.caption('Made by: Anuraag Kulkarni   |   Twitter: @Anuraag027')
 
-# [theme]
-# base="light"
-
+#Function for Radar Plot
 def plot_radar(bkup,df,n):
-#     print("n:",n)
-
+    
+    #Perform a merge on scaled dataframe and original dataframe
     new = pd.merge(df,bkup,on=['Player'],indicator=True)
+    #Remove the scaled columns
     new = new.loc[:, ~new.columns.str.contains("_x")]
+
     new.columns = new.columns.str.rstrip('_y')
     df = new.copy()
     
-    #get parameters
+    #get list of column names as parameters
     params = list(df.columns)
+    #Remove unwanted columns and keep only metric columns
     params = params[5:-1]
     new_params = []
     for i in range(len(params)):
         new_params.append(params[i].split('(')[0].strip())
     
+    #Update column names by adding '\n' to prevent clatter in radar plot
     new = []
     for c in new_params:
         if len(c.split(' ')) >= 2:
@@ -63,6 +64,7 @@ def plot_radar(bkup,df,n):
     ranges = []
     values = []
 
+    #Form minimum and maximum values for radar plot
     for x in params:
         a = min(df[params][x])
         a = a - (a*.15)
@@ -78,11 +80,10 @@ def plot_radar(bkup,df,n):
     colors_list = ['red','blue','yellow','pink','green','orange']
     colors_list = colors_list[:n]
 
+    #List of alphas for every player's chart. Currently keeping as the same
     alpha_list = [0.7,0.7,0.7,0.7,0.7,0.7]
     alpha_list = alpha_list[:n]
-    print(colors_list)
-    print(alpha_list)
-    
+
     endnote = 'Twitter: @Anuraag027'
 
     radar = Radar()
@@ -92,6 +93,7 @@ def plot_radar(bkup,df,n):
                              alphas=alpha_list,endnote=endnote,#title=title,endnote=endnote,
                              compare=True)
     
+    #Get player name with color used for them in bracket
     temp_str = ''
     for i in range(n):
         if i != n - 1:
@@ -102,46 +104,52 @@ def plot_radar(bkup,df,n):
     plt.title(temp_str,color='black',size=20,fontfamily='Candara')
     st.write(fig)
     
+    #This try_list will be needed for metric descriptions
     return try_list
     
-df = pd.read_csv('./All_stats_combined_with_positions.csv')
+# df = pd.read_csv('./All_stats_combined_with_positions.csv')
 
-df = df.iloc[:,3:] #Remove the Unnamed & rank columns
+#Remove the Unnamed & rank columns
+df = df.iloc[:,3:]
 
-# "with" notation
+# Widget sidebar, "with" notation
 with st.sidebar:
+    #Select the player
     player = st.selectbox(
          'Choose Player',
         df['Player'])
 
+    #Get the position for that player
     pos = df[df['Player'] == player]['TMPosition'].values[0]
     
     st.write(player,"plays at position:",pos)
     
+    #Age slider
     start_age, end_age = st.slider(
      'Select a range of age',
      value=[17, 25],step=1,min_value=17,max_value=int(df['Age'].max()))
 
     st.write('Suggested players will be between the ages',str(start_age),'and',str(end_age)+'.')
 
+    #Choose the threshold as the minimum of 12 and the 90s played by that player
     ninties = min(12,df['90s'][df[df['Player'] == player].index[0]])
-
-#     df = df[df['90s'] >= 8]
 
     df = df[df['90s'] >= ninties]
     st.write("90s played by player:",df['90s'][df[df['Player'] == player].index[0]])
     st.write("90s selected as threshold:",ninties)
     
+    #Display warning for 90s less than 8 as sample size is too small
     if ninties <= 8:
         st.caption("Minutes played by player is low, this can lead to inaccurate results due to small sample size")
     
     #Reset index
     df.reset_index(inplace=True)
     df.drop(['index'],axis=1,inplace=True)
-        
+    
+    #Filter all players that play in that position
     df = df[df['TMPosition'] == pos]
     
-
+    #Metric usage for every position
     if (pos == 'Right-Back') or (pos == 'Left-Back') or (pos == 'Left WingBack') or (pos == 'Right WingBack'):
         df = df[['Player','Squad','Age','Padj Tkl+Int p90 (defense_Padj_p90)','% of Dribblers Tackled (possession_p90)','Crs_p90 (passing_types_p90)',
                  'SCA_p90 (gca_p90)',
@@ -212,6 +220,7 @@ with st.sidebar:
                  'Prog Carries_p90 (possession_p90)','Prog Passes_p90 (possession_p90)','Clr_p90 (defense_Padj_p90)',
                  'Shots Blocked_p90 (possession_p90)', 'Pass_p90 (defense_Padj_p90)',
                  'Aerial Win % (possession_p90)','Won_p90 (misc_p90)','True Interceptions_p90 (possession_p90)']]        
+   
     df = df.dropna()
     #Reset index
     df.reset_index(inplace=True)
@@ -240,30 +249,23 @@ with st.sidebar:
 
     #Plotting the results onto a line graph, allowing us to observe 'The elbow'
     fig, ax = plt.subplots()
-#     plt.plot(range(1, 10), wcss)
     ax.plot(range(1, 10), wcss)
-    
-    
     ax.scatter(range(1, 10), wcss)
-#     ax.title('The elbow method')
-#     ax.xlabel('Number of clusters')
-#     ax.ylabel('WCSS/Inertia') 
-#     st.write(fig)#.show()
 
     #Create a k-means model, fit the features and get cluster predictions. Add the predictions as a column
+    #Currently using number of clusters as 4. SUBJECT TO CHANGE.
     kmeans = KMeans(n_clusters = 4,random_state=100)
     kmeans.fit(X)
     df['cluster'] = kmeans.predict(X)
 
     clus = df[df['Player'] == player]['cluster']
-    print(clus)
 
     df = df[df['cluster'] == int(clus)]    
 
     df.reset_index(inplace=True)
     df.drop(['index'],axis=1,inplace=True)
 
-
+    #Get the list of values of the same cluster players for calculating similarity score
     player_list = df[df['Player'] == player].values.tolist()
     others_list = df[df['Player'] != player].values.tolist()
 
@@ -271,18 +273,17 @@ with st.sidebar:
     df['Similarity Score'] = ''
     df['Similarity Score'][ind] = 0
     for elem in others_list:
-
         sim_score = 0
+        #Calculate similarity score using Euclidian distance
         for i in range(3,len(player_list[0])-1):
             sim_score += pow(player_list[0][i] - elem[i],2)
         sim_score = math.sqrt(sim_score)
         ind = df[df['Player'] == elem[0]].index
         df['Similarity Score'][ind] = sim_score
-
-    min_age = 17
-    max_age = 27
+    
+    #Filter for the players between the selected ages
     df = df[(df['Age'] >= start_age) & (df['Age'] <= end_age)]
-
+    #Sort the dataframe according to similarity score
     df = df.sort_values('Similarity Score')
 
 radar_df = df.copy()
@@ -290,22 +291,27 @@ df = df[['Player','Similarity Score']]
 df.reset_index(inplace=True)
 df.drop(['index'],axis=1,inplace=True)
 
+#Left column for result dataframe
 col1, col2 = st.columns([2,4])
 with col1:
     st.subheader("Results")
     st.write(df)
+#Right column for radar plot
 with col2:
     st.subheader("Radar Chart")
     radar_df.reset_index(inplace=True)
     radar_df.drop(['index'],axis=1,inplace=True)
     
+    #Radar will be plotted for 3 players APART from the selected player
     if df['Player'][0] == player:
         n = min(4,len(radar_df))
     else:
         n = min(3,len(radar_df))
     
+    #Plot the radar
     try_list = plot_radar(bkup = bkup_df,df = radar_df,n = n)
 
+#Metric descriptions
 try_list = [ele.rstrip().replace('\n','') for ele in try_list]
 
 test_dic = {
@@ -347,6 +353,7 @@ st.caption('The lower the similarity score, the higher the similarity between th
     
 st.subheader('Description for Metrics Used')
 
+#Look for every column name in above dictionary (key) and print the appropriate description (value)
 for ele in try_list:
     for k,v in test_dic.items():
         if ele in k:
