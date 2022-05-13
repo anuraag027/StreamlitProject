@@ -344,7 +344,7 @@ test_dic = {
 'Passes into Penalty Area_p90 (possession_p90)' : 'Passes Into Penalty Area per 90',
 'KP_p90 (possession_p90)' : 'Key Passes per 90',
 'Sh_p90 (possession_p90)' : 'Shots Taken per 90',
-'npxG/Shot (possession_p90)' : 'Non Penalty xG Generated per Shot, per 90',
+'npxG/Shot (possession_p90)' : 'Non Penalty xG Generated per Shot',
 'Clr_p90 (defense_Padj_p90)' : 'Clearances Made per 90'}
 
 st.caption('The lower the similarity score, the higher the similarity between the players. A similarity score of above 4.5 should be taken with a pinch of salt.')
