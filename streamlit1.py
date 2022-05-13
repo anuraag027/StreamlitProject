@@ -19,7 +19,7 @@ df = load_data()
 
 st.header('Use Machine Learning to Find Similar Players')
 st.caption('Select a player, and my Machine Learning model will suggest players similar to the selected player.')
-st.caption('Currently works for outfield positions for players from Europe\'s Top 5 Leagues - Premier League, La Liga, Seria A, Ligue 1 and Bundesliga.')
+st.caption('Currently works for outfield positions for players playing in Europe\'s Top 5 Leagues - Premier League, La Liga, Seria A, Ligue 1 and Bundesliga.')
 st.caption('Made by: Anuraag Kulkarni   |   Twitter: @Anuraag027')
 
 #Function for Radar Plot
