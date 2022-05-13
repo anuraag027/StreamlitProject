@@ -357,4 +357,4 @@ for ele in try_list:
 st.caption('Names of players are as taken as provided by Statsbomb on FBRef.com')
 st.caption('Data has been taken from FBRef (Statsbomb): https://fbref.com/en/')
 st.caption('Feel free to reach out to me on Twitter via DMs if you have any questions or if you face any issues with the app.')
-st.caption('If you like my work, please check out my articles on: https://thebeautifulgamereviewed.blogspot.com/')
+st.caption('If you like my work, check out my articles on: https://thebeautifulgamereviewed.blogspot.com/')
