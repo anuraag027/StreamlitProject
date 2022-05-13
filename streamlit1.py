@@ -241,17 +241,17 @@ with st.sidebar:
     X = np.array(df.iloc[:,3:])
     
     #Use the elbow method to find ideal number of clusters
-    wcss = [] #within cluster sum of squares
+#     wcss = [] #within cluster sum of squares
 
-    for i in range(1, 10):
-        kmeans = KMeans(n_clusters = i)
-        kmeans.fit(X)
-        wcss.append(kmeans.inertia_)
+#     for i in range(1, 10):
+#         kmeans = KMeans(n_clusters = i)
+#         kmeans.fit(X)
+#         wcss.append(kmeans.inertia_)
 
-    #Plotting the results onto a line graph, allowing us to observe 'The elbow'
-    fig, ax = plt.subplots()
-    ax.plot(range(1, 10), wcss)
-    ax.scatter(range(1, 10), wcss)
+#     #Plotting the results onto a line graph, allowing us to observe 'The elbow'
+#     fig, ax = plt.subplots()
+#     ax.plot(range(1, 10), wcss)
+#     ax.scatter(range(1, 10), wcss)
 
     #Create a k-means model, fit the features and get cluster predictions. Add the predictions as a column
     #Currently using number of clusters as 4. SUBJECT TO CHANGE.
