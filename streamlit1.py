@@ -67,10 +67,10 @@ def plot_radar(bkup,df,n):
     #Form minimum and maximum values for radar plot
     for x in params:
         a = min(df[params][x])
-        a = a - (a*.10)
+        a = a - (a*.1)
 
         b = max(df[params][x])
-        b = b + (b*.10)
+        b = b + (b*.05)
 
         ranges.append((a,b))
 
