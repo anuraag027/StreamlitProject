@@ -354,7 +354,7 @@ st.subheader('Description for Metrics Used')
 for ele in try_list:
     for k,v in test_dic.items():
         if ele in k:
-            st.write(ele,' = ',v)
+            st.write(ele,' : ',v)
     
 st.caption('Names of players are as taken as provided by Statsbomb on FBRef.com')
 st.caption('Data has been taken from FBRef (Statsbomb): https://fbref.com/en/')
