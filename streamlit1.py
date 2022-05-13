@@ -360,13 +360,13 @@ for ele in try_list:
         if ele in k:
             cnt += 1
             if ele == 'Prog Passes_p90':
-                st.write(cnt+'.',ele,':','Progressive Passes per 90')
+                st.write(str(cnt)+'.',ele,':','Progressive Passes per 90')
                 break
             if ele == 'Prog Carries_p90':
-                st.write(cnt+'.',ele,':','Progressive Carries per 90')
+                st.write(str(cnt)+'.',ele,':','Progressive Carries per 90')
                 break
             else:
-                st.write(cnt+'.',ele,' : ',v)
+                st.write(str(cnt)+'.',ele,' : ',v)
     
 st.caption('Names of players are as taken as provided by Statsbomb on FBRef.com')
 st.caption('Data has been taken from FBRef (Statsbomb): https://fbref.com/en/')
