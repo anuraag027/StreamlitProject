@@ -259,8 +259,8 @@ with st.sidebar:
 
     #Create a k-means model, fit the features and get cluster predictions. Add the predictions as a column
     #Currently using number of clusters as 4. SUBJECT TO CHANGE.
-#     kmeans = KMeans(n_clusters = 4,random_state=100)
-    kmeans = KMeans(n_clusters = 3,random_state=100)
+    kmeans = KMeans(n_clusters = 4)#,random_state=100)
+#     kmeans = KMeans(n_clusters = 3,random_state=100)
     kmeans.fit(X)
     df['cluster'] = kmeans.predict(X)
 
