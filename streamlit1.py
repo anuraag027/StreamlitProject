@@ -85,7 +85,7 @@ def plot_radar(bkup,df,n):
     colors_list = colors_list[:n]
 
     #List of alphas for every player's chart. Currently keeping as the same
-    alpha_list = [0.8,0.65,0.65,0.65]
+    alpha_list = [0.85,0.65,0.65,0.65]
     alpha_list = alpha_list[:n]
 
     endnote = 'Twitter: @Anuraag027'
