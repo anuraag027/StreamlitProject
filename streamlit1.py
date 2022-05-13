@@ -87,7 +87,7 @@ def plot_radar(bkup,df,n):
     print(colors_list)
     print(alpha_list)
     
-    endnote = 'Twitter: @Anuraag027\nTackles & Interceptions are possession-adjusted\nData from Statsbomb via FBRef'
+    endnote = 'Twitter: @Anuraag027'
 
     radar = Radar()
 
