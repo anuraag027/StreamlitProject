@@ -106,6 +106,8 @@ def plot_radar(bkup,df,n):
     plt.title(temp_str,color='black',size=20,fontfamily='Candara')
     st.write(fig)
     
+    return try_list
+    
 df = pd.read_csv('./All_stats_combined_with_positions.csv')
 
 df = df.iloc[:,3:] #Remove the Unnamed & rank columns
