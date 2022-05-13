@@ -354,5 +354,5 @@ for ele in try_list:
         if ele in k:
             st.write(ele,' = ',v)
     
-st.caption('Names of players are as used by Statsbomb for FBRef.')
+st.caption('Names of players are as taken as provided by Statsbomb on FBRef.com')
 st.caption('Data has been taken from FBRef (Statsbomb): https://fbref.com/en/')
