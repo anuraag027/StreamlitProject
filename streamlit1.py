@@ -16,6 +16,8 @@ warnings.filterwarnings('ignore')
 def load_data():
     return pd.read_csv('Data/All_stats_combined_with_positions.csv')
 df = load_data()
+
+#Drop Goalkeepers for now
 df.drop(df[df['TMPosition'] == 'Goalkeeper'].index, inplace=True)
 
 st.header('Use Machine Learning to Find Similar Players')
