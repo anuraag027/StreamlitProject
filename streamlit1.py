@@ -17,9 +17,10 @@ def load_data():
     return pd.read_csv('Data/All_stats_combined_with_positions.csv')
 df = load_data()
 
+
+
 #Drop Goalkeepers for now
 df.drop(df[df['TMPosition'] == 'Goalkeeper'].index, inplace=True)
-
 st.header('Use Machine Learning to Find Similar Players')
 st.caption('Select a player, and my Machine Learning model will suggest players similar to the selected player.')
 st.caption('Currently works for outfield positions for players playing in Europe\'s Top 5 Leagues - Premier League, La Liga, Seria A, Ligue 1 and Bundesliga.')
