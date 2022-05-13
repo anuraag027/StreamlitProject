@@ -1,24 +1,9 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-# import matplotlib as mpl
 import matplotlib.pyplot as plt
-# import seaborn as sns
-# import cmasher as cmr
-# from mplsoccer.pitch import Pitch
-# from urllib.request import urlopen
 import math
 from soccerplots.radar_chart import Radar
-# from matplotlib.colors import to_rgba
-
-# from matplotlib.colors import LinearSegmentedColormap
-# from PIL import Image
-# from highlight_text import ax_text
-# from mplsoccer import VerticalPitch, add_image, FontManager
-# from mplsoccer.statsbomb import read_event, EVENT_SLUG
-# import os
-# import glob
-# from requirements import *
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 import math
@@ -32,7 +17,7 @@ def load_data():
     return pd.read_csv('Data/All_stats_combined_with_positions.csv')
 df = load_data()
 
-@st.cache
+# @st.cache
 
 st.header('Use Machine Learning to Find Similar Players')
 st.caption('Select a player, and my Machine Learning model will suggest players similar to the selected player.')
