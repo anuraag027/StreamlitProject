@@ -61,6 +61,7 @@ def plot_radar(bkup,df,n):
             new.append(c)
 
     new_params = new
+    try_list = new
     
     #add ranges to list of tuple pairs
     ranges = []
@@ -303,7 +304,53 @@ with col2:
     else:
         n = min(3,len(radar_df))
     
-    plot_radar(bkup = bkup_df,df = radar_df,n = n)
+    try_list = plot_radar(bkup = bkup_df,df = radar_df,n = n)
 
+try_list = [ele.rstrip().replace('\n','') for ele in try_list]
+
+test_dic = {
+'Long Att_p90 (passing_p90)' : 'Long Passes Attempted per 90',
+'Completed Passes_p90 (passing_p90)': 'Completed Passes per 90',
+'Successful Dribbles_p90 (possession_p90)' : 'Successful Dribbles per 90',
+'npxG_p90 (shooting_p90)' : 'Non Penalty xG per 90',
+'% of Dribblers Tackled (possession_p90)' : 'Percentage of Dribblers Tackled',
+'Receiving Prog_p90 (possession_p90)' : 'Progressive Passes Received per 90',
+'Pass_p90 (defense_Padj_p90)' : 'Blocked Passes per 90',
+'Prog Passes_p90 (possession_p90)' : 'Progressive Passes per 90',
+'Crs_p90 (passing_types_p90)' : 'Crosses per 90',
+'True Interceptions_p90 (possession_p90)' : 'True Interceptions = Interceptions per 90 + Blocked Shots per 90 + Blocked Passes per 90',
+'xA_p90 (passing_p90)' : 'Expected Assists per 90',
+'Carries into Penalty Area_p90 (possession_p90)' : 'Carries Into Penalty Area per 90',
+'Padj Tkl+Int p90 (defense_Padj_p90)' : 'Possession Adjusted Tackles + Interceptions per 90',
+'Attempted Dribbles_p90 (possession_p90)' : 'Attempted Dribbles per 90',
+'Aerial Win % (possession_p90)' : '% of Aerial Duals Won',
+'Prog Carries_p90 per 100 touches (possession_p90)' : 'Progressive Carries per 100 touches, per 90',
+'Carries into Final 1/3_p90 (possession_p90)' : 'Carries into The Final Third per 90',
+'Won_p90 (misc_p90)' : 'Aerial Duals Won per 90',
+'Long Cmp_p90 (passing_p90)' : 'Long Passes Completed per 90',
+'SoT_p90 (possession_p90)' : 'Shots on Target per 90',
+'SCA_p90 (gca_p90)' : 'Shot Creating Actions per 90',
+'Prog Actions_p90 (possession_p90)' : 'Progressive Actions = Progressive Passes per 90 + Progressive Carries per 90',
+'Prog Carries_p90 (possession_p90)' : 'Progressive Carries per 90',
+'Passes into Final 1/3_p90 (possession_p90)' : 'Passes into The Final Third per 90',
+'Press_p90 (passing_types_p90)' : 'Passes Made Under Pressure per 90',
+'Sh_p90 (defense_Padj_p90)' : 'Shots Blocked per 90',
+'Prog Passes_p90 per 50 passes (possession_p90)' : 'Progressive Passes per 50 Completed Passes, per 90',
+'TB_p90 (passing_types_p90)' : 'Through Balls per 90',
+'Passes into Penalty Area_p90 (possession_p90)' : 'Passes Into Penalty Area per 90',
+'KP_p90 (possession_p90)' : 'Key Passes per 90',
+'Sh_p90 (possession_p90)' : 'Shots Taken per 90',
+'npxG/Sh_p90 (shooting_p90)' : 'Non Penalty xG Generated per Shot, per 90',
+'Clr_p90 (defense_Padj_p90)' : 'Clearances Made per 90'}
+
+st.caption('The lower the similarity score, the higher the similarity between the players. A similarity score of above 4.5 should be taken with a pinch of salt.')
+    
+st.subheader('Description for Metrics Used')
+
+for ele in try_list:
+    for k,v in test_dic.items():
+        if ele in k:
+            st.write(ele,' = ',v)
+    
 st.caption('Names of players are as used by Statsbomb for FBRef.')
 st.caption('Data has been taken from FBRef (Statsbomb): https://fbref.com/en/')
