@@ -153,7 +153,7 @@ with st.sidebar:
     if (pos == 'Right-Back') or (pos == 'Left-Back') or (pos == 'Left WingBack') or (pos == 'Right WingBack'):
         df = df[['Player','Squad','Age','Padj Tkl+Int p90 (defense_Padj_p90)','% of Dribblers Tackled (possession_p90)','Crs_p90 (passing_types_p90)',
                  'SCA_p90 (gca_p90)',
-                 'xA_p90 (passing_p90)','Passes into Final 1/3_p90 (possession_p90)',
+                 'xA_p90 (passing_p90)','Passes into Final 1/3_p90 (possession_p90)', 'Receiving Prog_p90 (possession_p90)',
                  'Carries into Final 1/3_p90 (possession_p90)','KP_p90 (possession_p90)','TB_p90 (passing_types_p90)',
                  'True Interceptions_p90 (possession_p90)','Prog Carries_p90 per 100 touches (possession_p90)',
                  'Prog Carries_p90 (possession_p90)','Prog Passes_p90 (possession_p90)']]
