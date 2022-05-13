@@ -51,7 +51,7 @@ def plot_radar(bkup,df,n):
             temp = c.split(' ')
             col_str = ''
             for i in range(len(temp)):
-                if (i == 1) or (i == 3):
+                if (i == 1) or (i == 3) or (i == 5):
                     col_str += temp[i] + '\n'
                 else:
                     col_str += temp[i]
