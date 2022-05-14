@@ -118,9 +118,9 @@ def plot_radar(bkup,df,n):
     temp_str = ''
     for i in range(n):
         if i != n - 1:
-            temp_str += df['Player'][i] + ' (' + colors_list[i] + ') vs '
+            temp_str += df['Player'][i] + ' (' + colors_list[i].capitalize() + ') vs '
         else:
-            temp_str += df['Player'][i] + ' (' + colors_list[i] + ')'
+            temp_str += df['Player'][i] + ' (' + colors_list[i].capitalize() + ')'
     
     plt.title(temp_str,color='black',size=20,fontfamily='Candara')
     st.write(fig)
