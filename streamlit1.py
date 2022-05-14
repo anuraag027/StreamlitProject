@@ -26,12 +26,11 @@ def create_kmeans_model(k=8):
     return model
 
 @st.cache(allow_output_mutation=True)
-def get_ideal_k():
+def get_ideal_k(model):
     # k is range of number of clusters.
     visualizer = KElbowVisualizer(model, k=(1,10), timings= True)
     visualizer.fit(X)        # Fit data to visualizer
     ideal_k = visualizer.elbow_value_ #Get the elbow value
-    st.write('Number of clusters chosen:',ideal_k)
     return ideal_k
 
 @st.cache(allow_output_mutation=True)
@@ -260,8 +259,9 @@ with st.sidebar:
     #Get the scaled features
     X = np.array(df.iloc[:,3:])
     
-    model = create_kmeans_model()
-    ideal_k = get_ideal_k()
+    calc_k_model = create_kmeans_model()
+    ideal_k = get_ideal_k(calc_k_model)
+    st.write('Number of clusters chosen:',ideal_k)
     kmeans = create_kmeans_model(k=ideal_k)
     kmeans.fit(X)
     df['cluster'] = kmeans.predict(X)
