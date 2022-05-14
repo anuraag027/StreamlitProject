@@ -14,19 +14,19 @@ warnings.filterwarnings('ignore')
 
 # ADDING CACHE OPTION
 @st.cache
-def load_data():
+def load_data(): #Function to load csv data into dataframe
     df = pd.read_csv('Data/All_stats_combined_with_positions.csv')
     df.drop(df[df['TMPosition'] == 'Goalkeeper'].index, inplace=True)
     return df
 df = load_data()
 
 @st.cache(allow_output_mutation=True)
-def create_kmeans_model(k=8):
+def create_kmeans_model(k=8): #Function to create K Means model
     model = KMeans(n_clusters=k)
     return model
 
 @st.cache(allow_output_mutation=True)
-def get_ideal_k(model):
+def get_ideal_k(model): #Function to calculate ideal number of clusters
     # k is range of number of clusters.
     visualizer = KElbowVisualizer(model, k=(1,10), timings= True)
     visualizer.fit(X)        # Fit data to visualizer
@@ -34,7 +34,7 @@ def get_ideal_k(model):
     return ideal_k
 
 @st.cache(allow_output_mutation=True)
-def create_scaler_model():
+def create_scaler_model(): #Function to create standard scaler model
     return StandardScaler()
 
 #Drop Goalkeepers for now
@@ -249,7 +249,6 @@ with st.sidebar:
     
     #Scale all the required features, as some may be absolute values and some may be percentages
     scaler = create_scaler_model()
-
     scaler.fit(df.drop(['Player','Squad','Age'],axis=1))
     scaled_features = scaler.transform(df.drop(['Player','Squad','Age'],axis=1))
     scaled_feat_df = pd.DataFrame(scaled_features,columns=df.columns[3:])
@@ -259,17 +258,25 @@ with st.sidebar:
     #Get the scaled features
     X = np.array(df.iloc[:,3:])
     
+    #Create a model to find k using elbow method
     calc_k_model = create_kmeans_model()
+    #Find ideal k (number of clusters) using elbow method
     ideal_k = get_ideal_k(calc_k_model)
     st.write('Number of clusters chosen:',ideal_k)
+    
+    #Create a K Means model with ideal number of clusters
     kmeans = create_kmeans_model(k=ideal_k)
     kmeans.fit(X)
+    
+    #Add a cluster column and assign a cluster to each player
     df['cluster'] = kmeans.predict(X)
 
+    #Get the cluster value of player in question
     clus = df[df['Player'] == player]['cluster']
 
+    #Filter and keep only players who are in the same cluster as player in question
     df = df[df['cluster'] == int(clus)]    
-
+    #Reset index
     df.reset_index(inplace=True)
     df.drop(['index'],axis=1,inplace=True)
 
@@ -277,9 +284,13 @@ with st.sidebar:
     player_list = df[df['Player'] == player].values.tolist()
     others_list = df[df['Player'] != player].values.tolist()
 
+    #Get index of player in question
     ind = df[df['Player'] == player_list[0][0]].index[0]
     df['Similarity Score'] = ''
+    #Assign similarity score 0 for player in question
     df['Similarity Score'][ind] = 0
+    
+    #Calculate similarity score
     for elem in others_list:
         sim_score = 0
         #Calculate similarity score using Euclidian distance
@@ -322,6 +333,7 @@ with col2:
 #Metric descriptions
 try_list = [ele.rstrip().replace('\n','') for ele in try_list]
 
+#Dictionary mapping every metric to its description
 test_dic = {
 'Long Att_p90 (passing_p90)' : 'Long Passes Attempted per 90',
 'Completed Passes_p90 (passing_p90)': 'Completed Passes per 90',
@@ -367,15 +379,16 @@ for ele in try_list:
     for k,v in test_dic.items():
         if ele in k:
             cnt += 1
-            if ele == 'Prog Passes_p90':
+            if ele == 'Prog Passes_p90': #This is done because the string Prog Passes_p90 appears twice, once as 'Prog Passes_p90' once in 'Prog Passes_p90 per 50 passes'
                 st.write(str(cnt)+'.',ele,':','Progressive Passes per 90')
                 break
-            if ele == 'Prog Carries_p90':
+            if ele == 'Prog Carries_p90': #Same logic as for Prog Passes_p90
                 st.write(str(cnt)+'.',ele,':','Progressive Carries per 90')
                 break
             else:
                 st.write(str(cnt)+'.',ele,' : ',v)
-    
+
+#Acknowledgements
 st.caption('Names of players are as taken as provided by Statsbomb on FBRef.com')
 st.caption('Data has been taken from FBRef (Statsbomb): https://fbref.com/en/')
 st.caption('Feel free to reach out to me on Twitter via DMs if you have any questions or if you face any issues with the app.')
