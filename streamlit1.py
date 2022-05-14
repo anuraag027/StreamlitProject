@@ -25,6 +25,19 @@ def create_kmeans_model(k=8):
     model = KMeans(n_clusters=k)
     return model
 
+@st.cache(allow_output_mutation=True)
+def get_ideal_k():
+    # k is range of number of clusters.
+    visualizer = KElbowVisualizer(model, k=(1,10), timings= True)
+    visualizer.fit(X)        # Fit data to visualizer
+    ideal_k = visualizer.elbow_value_ #Get the elbow value
+    st.write('Number of clusters chosen:',ideal_k)
+    return ideal_k
+
+@st.cache(allow_output_mutation=True)
+def create_scaler_model():
+    return StandardScaler()
+
 #Drop Goalkeepers for now
 st.header('Use Machine Learning to Find Similar Players')
 st.caption('Select a player, and my Machine Learning model will suggest players similar to the selected player.')
@@ -116,8 +129,6 @@ def plot_radar(bkup,df,n):
     #This try_list will be needed for metric descriptions
     return try_list
     
-# df = pd.read_csv('./All_stats_combined_with_positions.csv')
-
 #Remove the Unnamed & rank columns
 df = df.iloc[:,3:]
 
@@ -238,7 +249,7 @@ with st.sidebar:
     bkup_df = df.copy()
     
     #Scale all the required features, as some may be absolute values and some may be percentages
-    scaler = StandardScaler()
+    scaler = create_scaler_model()
 
     scaler.fit(df.drop(['Player','Squad','Age'],axis=1))
     scaled_features = scaler.transform(df.drop(['Player','Squad','Age'],axis=1))
@@ -249,30 +260,8 @@ with st.sidebar:
     #Get the scaled features
     X = np.array(df.iloc[:,3:])
     
-    #Use the elbow method to find ideal number of clusters
-#     wcss = [] #within cluster sum of squares
-
-#     for i in range(1, 10):
-#         kmeans = KMeans(n_clusters = i)
-#         kmeans.fit(X)
-#         wcss.append(kmeans.inertia_)
-
-#     #Plotting the results onto a line graph, allowing us to observe 'The elbow'
-#     fig, ax = plt.subplots()
-#     ax.plot(range(1, 10), wcss)
-#     ax.scatter(range(1, 10), wcss)
-    
-#     model = KMeans()
     model = create_kmeans_model()
-    # k is range of number of clusters.
-    visualizer = KElbowVisualizer(model, k=(1,10), timings= True)
-    visualizer.fit(X)        # Fit data to visualizer
-    ideal_k = visualizer.elbow_value_
-    #Create a k-means model, fit the features and get cluster predictions. Add the predictions as a column
-    #Currently using number of clusters as 4. SUBJECT TO CHANGE.
-#     kmeans = KMeans(n_clusters = 4,random_state=100)
-    st.write('Number of clusters chosen:',ideal_k)
-#     kmeans = KMeans(n_clusters = ideal_k,random_state=100)
+    ideal_k = get_ideal_k()
     kmeans = create_kmeans_model(k=ideal_k)
     kmeans.fit(X)
     df['cluster'] = kmeans.predict(X)
