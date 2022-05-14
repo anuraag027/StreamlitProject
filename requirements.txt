@@ -4,3 +4,4 @@ numpy==1.18.1
 pandas==1.0.5
 scikit_learn==1.0.2
 soccerplots==1.0.0
+yellowbrick==1.4
