@@ -20,7 +20,7 @@ def load_data():
     return df
 df = load_data()
 
-@st.cache
+@st.cache(allow_output_mutation=True)
 def create_kmeans_model(k=8):
     model = KMeans(n_clusters=k)
     return model
