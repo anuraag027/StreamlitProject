@@ -20,6 +20,10 @@ def load_data():
     return df
 df = load_data()
 
+@st.cache
+def create_kmeans_model(k=8):
+    model = KMeans(n_clusters=k)
+    return model
 
 #Drop Goalkeepers for now
 st.header('Use Machine Learning to Find Similar Players')
@@ -258,7 +262,8 @@ with st.sidebar:
 #     ax.plot(range(1, 10), wcss)
 #     ax.scatter(range(1, 10), wcss)
     
-    model = KMeans()
+#     model = KMeans()
+    model = create_kmeans_model()
     # k is range of number of clusters.
     visualizer = KElbowVisualizer(model, k=(1,10), timings= True)
     visualizer.fit(X)        # Fit data to visualizer
@@ -267,7 +272,8 @@ with st.sidebar:
     #Currently using number of clusters as 4. SUBJECT TO CHANGE.
 #     kmeans = KMeans(n_clusters = 4,random_state=100)
     st.write('Number of clusters chosen:',ideal_k)
-    kmeans = KMeans(n_clusters = ideal_k,random_state=100)
+#     kmeans = KMeans(n_clusters = ideal_k,random_state=100)
+    kmeans = create_kmeans_model(k=ideal_k)
     kmeans.fit(X)
     df['cluster'] = kmeans.predict(X)
 
