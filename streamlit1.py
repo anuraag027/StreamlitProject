@@ -26,7 +26,7 @@ def create_kmeans_model(k=8): #Function to create K Means model
     return model
 
 @st.cache(allow_output_mutation=True)
-def get_ideal_k(model): #Function to calculate ideal number of clusters
+def get_ideal_k(model,X): #Function to calculate ideal number of clusters
     # k is range of number of clusters.
     visualizer = KElbowVisualizer(model, k=(1,10), timings= True)
     visualizer.fit(X)        # Fit data to visualizer
@@ -261,7 +261,7 @@ with st.sidebar:
     #Create a model to find k using elbow method
     calc_k_model = create_kmeans_model()
     #Find ideal k (number of clusters) using elbow method
-    ideal_k = get_ideal_k(calc_k_model)
+    ideal_k = get_ideal_k(calc_k_model,X)
     st.write('Number of clusters chosen:',ideal_k)
     
     #Create a K Means model with ideal number of clusters
