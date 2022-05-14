@@ -7,6 +7,7 @@ from soccerplots.radar_chart import Radar
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 import math
+from yellowbrick.cluster import KElbowVisualizer
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -256,11 +257,17 @@ with st.sidebar:
 #     fig, ax = plt.subplots()
 #     ax.plot(range(1, 10), wcss)
 #     ax.scatter(range(1, 10), wcss)
-
+    
+    model = KMeans()
+    # k is range of number of clusters.
+    visualizer = KElbowVisualizer(model, k=(1,10), timings= True)
+    visualizer.fit(X)        # Fit data to visualizer
+    ideal_k = visualizer.elbow_value_
     #Create a k-means model, fit the features and get cluster predictions. Add the predictions as a column
     #Currently using number of clusters as 4. SUBJECT TO CHANGE.
-    kmeans = KMeans(n_clusters = 4)#,random_state=100)
-#     kmeans = KMeans(n_clusters = 3,random_state=100)
+#     kmeans = KMeans(n_clusters = 4,random_state=100)
+    st.write('Number of clusters chosen:',ideal_k)
+    kmeans = KMeans(n_clusters = ideal_k,random_state=100)
     kmeans.fit(X)
     df['cluster'] = kmeans.predict(X)
 
