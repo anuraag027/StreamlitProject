@@ -141,6 +141,19 @@ with st.sidebar:
     #Get the position for that player
     pos = df[df['Player'] == player]['TMPosition'].values[0]
     
+    #Filter all players that play in that position
+#     df = df[df['TMPosition'] == pos]
+#     if 'WingBack' in pos:
+#         df = df[df['TMPosition'].isin(['Left WingBack','Right WingBack'])]
+    if 'Back' in pos:
+        df = df[df['TMPosition'].isin(['Right-Back','Left-Back','Left WingBack','Right WingBack'])]
+        pos = 'Fullback/Wingback'
+    elif 'Winger' in pos:
+        df = df[df['TMPosition'].isin(['Right Winger','Left Winger'])]
+        pos = 'Winger'
+    else:
+        df = df[df['TMPosition'] == pos]
+    
     st.write(player,"plays at position:",pos)
     
     #Age slider
@@ -165,16 +178,7 @@ with st.sidebar:
     df.reset_index(inplace=True)
     df.drop(['index'],axis=1,inplace=True)
     
-    #Filter all players that play in that position
-#     df = df[df['TMPosition'] == pos]
-#     if 'WingBack' in pos:
-#         df = df[df['TMPosition'].isin(['Left WingBack','Right WingBack'])]
-    if 'Back' in pos:
-        df = df[df['TMPosition'].isin(['Right-Back','Left-Back','Left WingBack','Right WingBack'])]
-    elif 'Winger' in pos:
-        df = df[df['TMPosition'].isin(['Right Winger','Left Winger'])]
-    else:
-        df = df[df['TMPosition'] == pos]
+
     
     #Metric usage for every position
     if (pos == 'Right-Back') or (pos == 'Left-Back') or (pos == 'Left WingBack') or (pos == 'Right WingBack'):
