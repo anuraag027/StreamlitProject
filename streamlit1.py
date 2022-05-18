@@ -38,9 +38,9 @@ def create_scaler_model(): #Function to create standard scaler model
     return StandardScaler()
 
 #Drop Goalkeepers for now
-st.header('Use Machine Learning to Find Similar Players')
-st.caption('Select a player, and my Machine Learning model will suggest players similar to the selected player.')
-st.caption('Currently works for outfield positions for players playing in Europe\'s Top 5 Leagues - Premier League, La Liga, Seria A, Ligue 1 and Bundesliga.')
+st.header('Use Machine Learning to Find Players of Similar Profiles')
+st.caption('Select a player, and my Machine Learning model will suggest similar players.')
+st.caption('Currently works for outfield positions for players playing in any one of Europe\'s Top 5 Leagues - Premier League, La Liga, Seria A, Ligue 1 and Bundesliga.')
 st.caption('Made by: Anuraag Kulkarni   |   Twitter: @Anuraag027')
 
 #Function for Radar Plot
@@ -105,7 +105,7 @@ def plot_radar(bkup,df,n):
     alpha_list = [0.85,0.65,0.65,0.65]
     alpha_list = alpha_list[:n]
 
-    endnote = 'Twitter: @Anuraag027'
+    endnote = 'Twitter: @Anuraag027\nData from Statsbomb via FBRef.'
 
     radar = Radar()
 
@@ -393,4 +393,5 @@ st.caption('Names of players are as taken as provided by Statsbomb on FBRef.com'
 st.caption('Data has been taken from FBRef (Statsbomb): https://fbref.com/en/')
 st.caption('Player positions as defined by Jase: https://twitter.com/jaseziv/status/1520148594866913280?s=20&t=gczD9hyTCCHCU81w8-EBYw')
 st.caption('Feel free to reach out to me on Twitter via DMs if you have any questions or if you face any issues with the app.')
+st.caption('This app only takes publicly available metrics to find similarities. This will not be 100% so please DO NOT use this as conclusive evidence of player profiles.')
 st.caption('If you like my work, check out my articles on: https://thebeautifulgamereviewed.blogspot.com/')
