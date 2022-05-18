@@ -167,10 +167,10 @@ with st.sidebar:
     
     #Filter all players that play in that position
 #     df = df[df['TMPosition'] == pos]
-    if 'WingBack' in pos:
-        df = df[df['TMPosition'].isin(['Left WingBack','Right WingBack'])]
-    elif 'Back' in pos:
-        df = df[df['TMPosition'].isin(['Right-Back','Left-Back'])]
+#     if 'WingBack' in pos:
+#         df = df[df['TMPosition'].isin(['Left WingBack','Right WingBack'])]
+    if 'Back' in pos:
+        df = df[df['TMPosition'].isin(['Right-Back','Left-Back','Left WingBack','Right WingBack'])]
     elif 'Winger' in pos:
         df = df[df['TMPosition'].isin(['Right Winger','Left Winger'])]
     else:
