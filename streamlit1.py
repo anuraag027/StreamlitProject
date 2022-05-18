@@ -241,8 +241,8 @@ with st.sidebar:
     elif (pos == 'Centre-Forward') or (pos == 'Second Striker'):
         df = df[['Player','Squad','Age','xA_p90 (passing_p90)','Passes into Penalty Area_p90 (possession_p90)',
                  'Carries into Penalty Area_p90 (possession_p90)','npxG_p90 (shooting_p90)', 'npxG/Shot (possession_p90)',
-                 'Sh_p90 (possession_p90)', 'SoT_p90 (possession_p90)','Aerial Win % (possession_p90)','Won_p90 (misc_p90)',
-                 'Receiving Prog_p90 (possession_p90)','SCA_p90 (gca_p90)','KP_p90 (possession_p90)','Off_p90 (misc_p90)',
+                 'Sh_p90 (possession_p90)','Successful Dribbles_p90 (possession_p90)','SoT_p90 (possession_p90)','Aerial Win % (possession_p90)',
+                 'Won_p90 (misc_p90)','Receiving Prog_p90 (possession_p90)','SCA_p90 (gca_p90)','KP_p90 (possession_p90)','Off_p90 (misc_p90)',
                  'Average Shot Distance (yards) (possession_p90)']]
 
     elif pos == 'Goalkeeper':
