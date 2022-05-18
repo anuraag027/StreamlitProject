@@ -151,6 +151,9 @@ with st.sidebar:
     elif pos in ['Right Winger','Left Winger']:
         df = df[df['TMPosition'].isin(['Right Winger','Left Winger'])]
         st.write(player,"plays at position: Winger")
+    elif pos in ['Centre-Forward','Second Striker']:
+        df = df[df['TMPosition'].isin(['Centre-Forward','Second Striker'])]
+        st.write(player,"plays at position: Striker/Second Striker")
     else:
         df = df[df['TMPosition'] == pos]
         st.write(player,"plays at position:",pos)
@@ -235,7 +238,7 @@ with st.sidebar:
                  'Passes into Penalty Area_p90 (possession_p90)','xA_p90 (passing_p90)','KP_p90 (possession_p90)',
                  'TB_p90 (passing_types_p90)','Receiving Prog_p90 (possession_p90)']]
 
-    elif pos == 'Centre-Forward':
+    elif (pos == 'Centre-Forward') or (pos == 'Second Striker'):
         df = df[['Player','Squad','Age','xA_p90 (passing_p90)','Passes into Penalty Area_p90 (possession_p90)',
                  'Carries into Penalty Area_p90 (possession_p90)','npxG_p90 (shooting_p90)', 'npxG/Shot (possession_p90)',
                  'Sh_p90 (possession_p90)', 'SoT_p90 (possession_p90)','Aerial Win % (possession_p90)','Won_p90 (misc_p90)',
@@ -247,12 +250,12 @@ with st.sidebar:
                  '#OPA_p90 (keepersadv_p90)', 'AvgDist_p90 (keepersadv_p90)','PSxG+/-_p90 (keepersadv_p90)', 'Cmp_p90 (keepersadv_p90)', 
                  'Att_p90 (keepersadv_p90)', 'Passes Att_p90 (keepersadv_p90)', 'Thr_p90 (keepersadv_p90)', 'AvgLen_p90 (keepersadv_p90)']]
 
-    elif pos == 'Second Striker':
-        df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)', 'Sh_p90 (possession_p90)', 'SoT_p90 (possession_p90)',
-                 'Passes into Penalty Area_p90 (possession_p90)','Carries into Penalty Area_p90 (possession_p90)',
-                 'xA_p90 (passing_p90)','KP_p90 (possession_p90)','npxG_p90 (shooting_p90)','SCA_p90 (gca_p90)',
-                 'Aerial Win % (possession_p90)','Won_p90 (misc_p90)', 'Receiving Prog_p90 (possession_p90)',
-                 'npxG/Shot (possession_p90)','Off_p90 (misc_p90)','Average Shot Distance (yards) (possession_p90)']]
+#     elif pos == 'Second Striker':
+#         df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)', 'Sh_p90 (possession_p90)', 'SoT_p90 (possession_p90)',
+#                  'Passes into Penalty Area_p90 (possession_p90)','Carries into Penalty Area_p90 (possession_p90)',
+#                  'xA_p90 (passing_p90)','KP_p90 (possession_p90)','npxG_p90 (shooting_p90)','SCA_p90 (gca_p90)',
+#                  'Aerial Win % (possession_p90)','Won_p90 (misc_p90)', 'Receiving Prog_p90 (possession_p90)',
+#                  'npxG/Shot (possession_p90)','Off_p90 (misc_p90)','Average Shot Distance (yards) (possession_p90)']]
 
     elif pos == 'Centre-Back':
         df = df[['Player','Squad','Age',
