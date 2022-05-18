@@ -169,7 +169,7 @@ with st.sidebar:
 #         df = df[df['TMPosition'].isin(['Left WingBack','Right WingBack'])]
     if pos in ['Right-Back','Left-Back','Left WingBack','Right WingBack']:
         df = df[df['TMPosition'].isin(['Right-Back','Left-Back','Left WingBack','Right WingBack'])]
-        st.write(player,"plays at position: FullBack / WingBack")
+        st.write(player,"plays at position: Fullback/Wingback")
     elif pos in ['Right Winger','Left Winger']:
         df = df[df['TMPosition'].isin(['Right Winger','Left Winger'])]
         st.write(player,"plays at position: Winger")
