@@ -285,7 +285,7 @@ with st.sidebar:
     calc_k_model = create_kmeans_model()
     #Find ideal k (number of clusters) using elbow method
     ideal_k = get_ideal_k(calc_k_model,X)
-    st.write('Number of clusters chosen:',ideal_k)
+    st.write('Number of clusters calculated:',ideal_k)
     
     #Create a K Means model with ideal number of clusters
     kmeans = create_kmeans_model(k=ideal_k)
