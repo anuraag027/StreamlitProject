@@ -147,10 +147,10 @@ with st.sidebar:
 #         df = df[df['TMPosition'].isin(['Left WingBack','Right WingBack'])]
     if 'Back' in pos:
         df = df[df['TMPosition'].isin(['Right-Back','Left-Back','Left WingBack','Right WingBack'])]
-        pos = 'Fullback/Wingback'
+#         pos = 'Fullback/Wingback'
     elif 'Winger' in pos:
         df = df[df['TMPosition'].isin(['Right Winger','Left Winger'])]
-        pos = 'Winger'
+#         pos = 'Winger'
     else:
         df = df[df['TMPosition'] == pos]
     
