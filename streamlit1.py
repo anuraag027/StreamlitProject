@@ -140,9 +140,7 @@ with st.sidebar:
 
     #Get the position for that player
     pos = df[df['Player'] == player]['TMPosition'].values[0]
-    
-    st.write(player,"plays at position:",pos)
-    
+        
     #Age slider
     start_age, end_age = st.slider(
      'Select a range of age',
@@ -171,13 +169,13 @@ with st.sidebar:
 #         df = df[df['TMPosition'].isin(['Left WingBack','Right WingBack'])]
     if pos in ['Right-Back','Left-Back','Left WingBack','Right WingBack']:
         df = df[df['TMPosition'].isin(['Right-Back','Left-Back','Left WingBack','Right WingBack'])]
-#         pos = 'Fullback/Wingback'
+        st.write(player,"plays at position: FullBack/WingBack")
     elif pos in ['Right Winger','Left Winger']:
         df = df[df['TMPosition'].isin(['Right Winger','Left Winger'])]
-#         pos = 'Winger'
+        st.write(player,"plays at position: Winger")
     else:
         df = df[df['TMPosition'] == pos]
-    
+        st.write(player,"plays at position:",pos)
     #Metric usage for every position
     if (pos == 'Right-Back') or (pos == 'Left-Back') or (pos == 'Left WingBack') or (pos == 'Right WingBack'):
         df = df[['Player','Squad','Age','Padj Tkl+Int p90 (defense_Padj_p90)','% of Dribblers Tackled (possession_p90)','Crs_p90 (passing_types_p90)',
