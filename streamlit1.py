@@ -291,13 +291,13 @@ with st.sidebar:
     #Find ideal k (number of clusters) using elbow method
     visualizer = KElbowVisualizer(calc_k_model, k=(1,10), timings= True)
     visualizer.fit(X)        # Fit data to visualizer
-    ideal_k = visualizer.elbow_value_ #Get the elbow value
+#     ideal_k = visualizer.elbow_value_ #Get the elbow value
 #     ideal_k = get_ideal_k(calc_k_model,X)
     
     st.write('Number of clusters calculated:',ideal_k)
     
     #Create a K Means model with ideal number of clusters
-    kmeans = KMeans(k=ideal_k)
+    kmeans = KMeans(n_clusters=visualizer.elbow_value_)
     kmeans.fit(X)
     
     #Add a cluster column and assign a cluster to each player
