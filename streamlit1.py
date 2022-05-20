@@ -20,10 +20,10 @@ def load_data(): #Function to load csv data into dataframe
     return df
 df = load_data()
 
-@st.cache(allow_output_mutation=True)
-def create_kmeans_model(k=8): #Function to create K Means model
-    model = KMeans(n_clusters=k)
-    return model
+# @st.cache(allow_output_mutation=True)
+# def create_kmeans_model(k=8): #Function to create K Means model
+#     model = KMeans(n_clusters=k)
+#     return model
 
 # @st.cache(allow_output_mutation=True)
 # def get_ideal_k(model,X): #Function to calculate ideal number of clusters
@@ -284,9 +284,9 @@ with st.sidebar:
     
     #Get the scaled features
     X = np.array(df.iloc[:,3:])
-    
+        
     #Create a model to find k using elbow method
-    calc_k_model = create_kmeans_model()
+    calc_k_model = KMeans()
     
     #Find ideal k (number of clusters) using elbow method
     visualizer = KElbowVisualizer(calc_k_model, k=(1,10), timings= True)
@@ -297,7 +297,7 @@ with st.sidebar:
     st.write('Number of clusters calculated:',ideal_k)
     
     #Create a K Means model with ideal number of clusters
-    kmeans = create_kmeans_model(k=ideal_k)
+    kmeans = KMeans(k=ideal_k)
     kmeans.fit(X)
     
     #Add a cluster column and assign a cluster to each player
