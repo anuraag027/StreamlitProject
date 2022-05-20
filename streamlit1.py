@@ -294,7 +294,7 @@ with st.sidebar:
 #     ideal_k = visualizer.elbow_value_ #Get the elbow value
 #     ideal_k = get_ideal_k(calc_k_model,X)
     
-    st.write('Number of clusters calculated:',ideal_k)
+    st.write('Number of clusters calculated:',visualizer.elbow_value_)
     
     #Create a K Means model with ideal number of clusters
     kmeans = KMeans(n_clusters=visualizer.elbow_value_)
