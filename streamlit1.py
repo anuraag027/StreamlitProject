@@ -25,13 +25,13 @@ def create_kmeans_model(k=8): #Function to create K Means model
     model = KMeans(n_clusters=k)
     return model
 
-@st.cache(allow_output_mutation=True)
-def get_ideal_k(model,X): #Function to calculate ideal number of clusters
-    # k is range of number of clusters.
-    visualizer = KElbowVisualizer(model, k=(1,10), timings= True)
-    visualizer.fit(X)        # Fit data to visualizer
-    ideal_k = visualizer.elbow_value_ #Get the elbow value
-    return ideal_k
+# @st.cache(allow_output_mutation=True)
+# def get_ideal_k(model,X): #Function to calculate ideal number of clusters
+#     # k is range of number of clusters.
+#     visualizer = KElbowVisualizer(model, k=(1,10), timings= True)
+#     visualizer.fit(X)        # Fit data to visualizer
+#     ideal_k = visualizer.elbow_value_ #Get the elbow value
+#     return ideal_k
 
 @st.cache(allow_output_mutation=True)
 def create_scaler_model(): #Function to create standard scaler model
@@ -287,8 +287,13 @@ with st.sidebar:
     
     #Create a model to find k using elbow method
     calc_k_model = create_kmeans_model()
+    
     #Find ideal k (number of clusters) using elbow method
-    ideal_k = get_ideal_k(calc_k_model,X)
+    visualizer = KElbowVisualizer(calc_k_model, k=(1,10), timings= True)
+    visualizer.fit(X)        # Fit data to visualizer
+    ideal_k = visualizer.elbow_value_ #Get the elbow value
+#     ideal_k = get_ideal_k(calc_k_model,X)
+    
     st.write('Number of clusters calculated:',ideal_k)
     
     #Create a K Means model with ideal number of clusters
