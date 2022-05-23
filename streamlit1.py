@@ -43,6 +43,7 @@ st.caption('Select a player, and my Machine Learning model will suggest similar 
 st.caption('Currently works for outfield positions for players playing in any one of Europe\'s Top 5 Leagues - Premier League, La Liga, Seria A, Ligue 1 and Bundesliga.')
 st.caption('Made by: Anuraag Kulkarni   |   Twitter: @Anuraag027')
 
+@st.cache(allow_output_mutation=True)
 #Function for Radar Plot
 def plot_radar(bkup,df,n):
     
@@ -127,7 +128,8 @@ def plot_radar(bkup,df,n):
     
     #This try_list will be needed for metric descriptions
     return try_list
-    
+#END OF PLOT RADAR FUNCTION
+
 #Remove the Unnamed & rank columns
 df = df.iloc[:,3:]
 
