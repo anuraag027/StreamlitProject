@@ -144,16 +144,16 @@ with st.sidebar:
     pos = df[df['Player'] == player]['TMPosition'].values[0]
     
     #Filter all players that play in that position
-#     df = df[df['TMPosition'] == pos]
-#     if 'WingBack' in pos:
-#         df = df[df['TMPosition'].isin(['Left WingBack','Right WingBack'])]
-    if pos in ['Right-Back','Left-Back','Left WingBack','Right WingBack']:
+    positions = st.multiselect('Select from available positions to narrow down your search:',
+                               pos,pos)
+    st.write(positions)
+    if pos in positions:
         df = df[df['TMPosition'].isin(['Right-Back','Left-Back','Left WingBack','Right WingBack'])]
         st.write(player,"plays at position: Fullback/Wingback")
-    elif pos in ['Right Winger','Left Winger']:
+    elif pos in positions:
         df = df[df['TMPosition'].isin(['Right Winger','Left Winger'])]
         st.write(player,"plays at position: Winger")
-    elif pos in ['Centre-Forward','Second Striker']:
+    elif pos in positions:
         df = df[df['TMPosition'].isin(['Centre-Forward','Second Striker'])]
         st.write(player,"plays at position: Striker/Second Striker")
     else:
