@@ -142,6 +142,8 @@ with st.sidebar:
 
     #Get the position for that player
     pos = df[df['Player'] == player]['TMPosition'].values[0]
+    st.write('haha')
+    st.write(pos)
     
     #Filter all players that play in that position
     positions = st.multiselect('Select from available positions to narrow down your search:',
