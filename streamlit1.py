@@ -392,6 +392,9 @@ with col2:
     except:
         print('The search list is too narrow/no players exist in the same cluster for the selected position. Please add more positions to the search list')
 
+if len(df) == 0:
+    st.caption('The search list is too narrow/no players exist in the same cluster for the selected position. Please add more positions to the search list')
+        
 #Dictionary mapping every metric to its description
 test_dic = {
 'Long Att_p90 (passing_p90)' : 'Long Passes Attempted per 90',
