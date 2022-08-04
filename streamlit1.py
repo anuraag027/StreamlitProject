@@ -163,7 +163,7 @@ with st.sidebar:
     
     if len(options) > 1:
         df = df[df['TMPosition'].isin(options)]
-        st.write(player,"plays at position:" pos)
+        st.write(player,"plays at position:",pos)
     else:
         df = df[df['TMPosition'] == pos]
         st.write(player,"plays at position:",pos)
