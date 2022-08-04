@@ -165,12 +165,15 @@ with st.sidebar:
     if pos in ['Right-Back','Left-Back','Left WingBack','Right WingBack']:
         options = st.multiselect('Choose from these positions to narrow down results',['Right-Back','Left-Back','Left WingBack','Right WingBack'],
                                 ['Right-Back','Left-Back','Left WingBack','Right WingBack'])
+        st.write(options)
     elif pos in ['Right Winger','Left Winger']:
         options = st.multiselect('Choose from these positions to narrow down results',['Right Winger','Left Winger'],
                                 ['Right Winger','Left Winger'])
+        st.write(options)
     elif pos in ['Centre-Forward','Second Striker']:
         options = st.multiselect('Choose from these positions to narrow down results',['Centre-Forward','Second Striker'],
                                 ['Centre-Forward','Second Striker'])
+        st.write(options)
 #     else:
 #         options = pos
     
