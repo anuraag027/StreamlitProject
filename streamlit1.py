@@ -161,13 +161,6 @@ with st.sidebar:
 #         df = df[df['TMPosition'] == pos]
 #         st.write(player,"plays at position:",pos)
     
-    if len(options) > 1:
-        df = df[df['TMPosition'].isin(options)]
-        st.write(player,"plays at position:",pos)
-    else:
-        df = df[df['TMPosition'] == pos]
-        st.write(player,"plays at position:",pos)
-    
     if pos in ['Right-Back','Left-Back','Left WingBack','Right WingBack']:
         options = st.multiselect('Choose from these positions to narrow down results',['Right-Back','Left-Back','Left WingBack','Right WingBack'],
                                 ['Right-Back','Left-Back','Left WingBack','Right WingBack'])
@@ -179,6 +172,13 @@ with st.sidebar:
                                 ['Centre-Forward','Second Striker'])
 #     else:
 #         options = pos
+    
+    if len(options) > 1:
+        df = df[df['TMPosition'].isin(options)]
+        st.write(player,"plays at position:",pos)
+    else:
+        df = df[df['TMPosition'] == pos]
+        st.write(player,"plays at position:",pos)
     
     #Age slider
     start_age, end_age = st.slider(
