@@ -449,6 +449,8 @@ try:
                     break
                 else:
                     st.write(str(cnt)+'.',ele,' : ',v)
+except:
+    print('Search list too narrow')
 
 #Acknowledgements
 st.caption('Names of players are as taken as provided by Statsbomb on FBRef.com')
