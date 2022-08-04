@@ -434,20 +434,21 @@ st.caption('The lower the similarity score, the higher the similarity between th
     
 st.subheader('Description for Metrics Used')
 
-#Look for every column name in above dictionary (key) and print the appropriate description (value)
-cnt = 0
-for ele in try_list:
-    for k,v in test_dic.items():
-        if ele in k:
-            cnt += 1
-            if ele == 'Prog Passes_p90': #This is done because the string Prog Passes_p90 appears twice, once as 'Prog Passes_p90' once in 'Prog Passes_p90 per 50 passes'
-                st.write(str(cnt)+'.',ele,':','Progressive Passes per 90')
-                break
-            if ele == 'Prog Carries_p90': #Same logic as for Prog Passes_p90
-                st.write(str(cnt)+'.',ele,':','Progressive Carries per 90')
-                break
-            else:
-                st.write(str(cnt)+'.',ele,' : ',v)
+try:
+    #Look for every column name in above dictionary (key) and print the appropriate description (value)
+    cnt = 0
+    for ele in try_list:
+        for k,v in test_dic.items():
+            if ele in k:
+                cnt += 1
+                if ele == 'Prog Passes_p90': #This is done because the string Prog Passes_p90 appears twice, once as 'Prog Passes_p90' once in 'Prog Passes_p90 per 50 passes'
+                    st.write(str(cnt)+'.',ele,':','Progressive Passes per 90')
+                    break
+                if ele == 'Prog Carries_p90': #Same logic as for Prog Passes_p90
+                    st.write(str(cnt)+'.',ele,':','Progressive Carries per 90')
+                    break
+                else:
+                    st.write(str(cnt)+'.',ele,' : ',v)
 
 #Acknowledgements
 st.caption('Names of players are as taken as provided by Statsbomb on FBRef.com')
