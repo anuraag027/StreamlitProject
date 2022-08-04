@@ -177,13 +177,6 @@ with st.sidebar:
 #     else:
 #         options = pos
     
-    if len(options) > 1:
-        df = df[df['TMPosition'].isin(options)]
-#         st.write(player,"plays at position:",pos)
-    else:
-        df = df[df['TMPosition'] == pos]
-#         st.write(player,"plays at position:",pos)
-    
     #Age slider
     start_age, end_age = st.slider(
      'Select a range of age',
@@ -191,21 +184,28 @@ with st.sidebar:
 
     st.write('Suggested players will be between the ages',str(start_age),'and',str(end_age)+'.')
 
-    #Choose the threshold as the minimum of 12 and the 90s played by that player
-    ninties = min(12,df['90s'][df[df['Player'] == player].index[0]])
+if len(options) > 1:
+    df = df[df['TMPosition'].isin(options)]
+#         st.write(player,"plays at position:",pos)
+else:
+    df = df[df['TMPosition'] == pos]
+#         st.write(player,"plays at position:",pos)
+    
+#Choose the threshold as the minimum of 12 and the 90s played by that player
+ninties = min(12,df['90s'][df[df['Player'] == player].index[0]])
 
-    df = df[df['90s'] >= ninties]
-    st.write("90s played by player:",df['90s'][df[df['Player'] == player].index[0]])
-    st.write("90s selected as threshold:",ninties)
-    
-    #Display warning for 90s less than 8 as sample size is too small
-    if ninties <= 8:
-        st.caption("Minutes played by player is low, this can lead to inaccurate results due to small sample size")
-    
-    #Reset index
-    df.reset_index(inplace=True)
-    df.drop(['index'],axis=1,inplace=True)
-    
+df = df[df['90s'] >= ninties]
+st.write("90s played by player:",df['90s'][df[df['Player'] == player].index[0]])
+st.write("90s selected as threshold:",ninties)
+
+#Display warning for 90s less than 8 as sample size is too small
+if ninties <= 8:
+    st.caption("Minutes played by player is low, this can lead to inaccurate results due to small sample size")
+
+#Reset index
+df.reset_index(inplace=True)
+df.drop(['index'],axis=1,inplace=True)
+
 #     #Filter all players that play in that position
 # #     df = df[df['TMPosition'] == pos]
 # #     if 'WingBack' in pos:
@@ -219,62 +219,62 @@ with st.sidebar:
 #     else:
 #         df = df[df['TMPosition'] == pos]
 #         st.write(player,"plays at position:",pos)
-        
-    #Metric usage for every position
-    if (pos == 'Right-Back') or (pos == 'Left-Back') or (pos == 'Left WingBack') or (pos == 'Right WingBack'):
-        df = df[['Player','Squad','Age','Padj Tkl+Int p90 (defense_Padj_p90)','% of Dribblers Tackled (possession_p90)','Crs_p90 (passing_types_p90)',
-                 'SCA_p90 (gca_p90)',
-                 'xA_p90 (passing_p90)','Prog Actions_p90 (possession_p90)','Passes into Final 1/3_p90 (possession_p90)',
-                 'Carries into Final 1/3_p90 (possession_p90)','KP_p90 (possession_p90)','TB_p90 (passing_types_p90)',
-                 'True Interceptions_p90 (possession_p90)','Prog Carries_p90 per 100 touches (possession_p90)']]
 
-    elif (pos == 'Right Winger') or (pos == 'Left Winger'):
-        df = df[['Player','Squad','Age','xA_p90 (passing_p90)','KP_p90 (possession_p90)','Successful Dribbles_p90 (possession_p90)',
-                 'Attempted Dribbles_p90 (possession_p90)','Passes into Penalty Area_p90 (possession_p90)',
-                 'Carries into Penalty Area_p90 (possession_p90)','npxG_p90 (shooting_p90)', 'npxG/Shot (possession_p90)',
-                 'Prog Actions_p90 (possession_p90)','Crs_p90 (passing_types_p90)','TB_p90 (passing_types_p90)',
-                 'Prog Carries_p90 per 100 touches (possession_p90)', 'Sh_p90 (possession_p90)', 'SoT_p90 (possession_p90)', 
-                 'Receiving Prog_p90 (possession_p90)','Prog Carries_p90 (possession_p90)','Prog Passes_p90 (possession_p90)',
-                 'Prog Passes_p90 per 50 passes (possession_p90)','Off_p90 (misc_p90)']]
+#Metric usage for every position
+if (pos == 'Right-Back') or (pos == 'Left-Back') or (pos == 'Left WingBack') or (pos == 'Right WingBack'):
+    df = df[['Player','Squad','Age','Padj Tkl+Int p90 (defense_Padj_p90)','% of Dribblers Tackled (possession_p90)','Crs_p90 (passing_types_p90)',
+             'SCA_p90 (gca_p90)',
+             'xA_p90 (passing_p90)','Prog Actions_p90 (possession_p90)','Passes into Final 1/3_p90 (possession_p90)',
+             'Carries into Final 1/3_p90 (possession_p90)','KP_p90 (possession_p90)','TB_p90 (passing_types_p90)',
+             'True Interceptions_p90 (possession_p90)','Prog Carries_p90 per 100 touches (possession_p90)']]
 
-    elif pos == 'Defensive Midfield':
-        df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)',
-                 'Padj Tkl+Int p90 (defense_Padj_p90)','% of Dribblers Tackled (possession_p90)',
-                 'Completed Passes_p90 (passing_p90)','Long Cmp_p90 (passing_p90)','Long Att_p90 (passing_p90)',
-                 'Press_p90 (passing_types_p90)','Prog Passes_p90 per 50 passes (possession_p90)',
-                 'Prog Carries_p90 per 100 touches (possession_p90)',
-                 'Passes into Final 1/3_p90 (possession_p90)','Prog Carries_p90 (possession_p90)',
-                 'Prog Passes_p90 (possession_p90)','Clr_p90 (defense_Padj_p90)','True Interceptions_p90 (possession_p90)']]
+elif (pos == 'Right Winger') or (pos == 'Left Winger'):
+    df = df[['Player','Squad','Age','xA_p90 (passing_p90)','KP_p90 (possession_p90)','Successful Dribbles_p90 (possession_p90)',
+             'Attempted Dribbles_p90 (possession_p90)','Passes into Penalty Area_p90 (possession_p90)',
+             'Carries into Penalty Area_p90 (possession_p90)','npxG_p90 (shooting_p90)', 'npxG/Shot (possession_p90)',
+             'Prog Actions_p90 (possession_p90)','Crs_p90 (passing_types_p90)','TB_p90 (passing_types_p90)',
+             'Prog Carries_p90 per 100 touches (possession_p90)', 'Sh_p90 (possession_p90)', 'SoT_p90 (possession_p90)', 
+             'Receiving Prog_p90 (possession_p90)','Prog Carries_p90 (possession_p90)','Prog Passes_p90 (possession_p90)',
+             'Prog Passes_p90 per 50 passes (possession_p90)','Off_p90 (misc_p90)']]
 
-    elif pos == 'Attacking Midfield':
-        df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)',
-                 'Completed Passes_p90 (passing_p90)','Press_p90 (passing_types_p90)','Prog Carries_p90 per 100 touches (possession_p90)',
-                 'Passes into Final 1/3_p90 (possession_p90)','Prog Carries_p90 (possession_p90)',
-                 'Prog Passes_p90 (possession_p90)','Carries into Final 1/3_p90 (possession_p90)',
-                 'Passes into Penalty Area_p90 (possession_p90)','Carries into Penalty Area_p90 (possession_p90)',
-                 'xA_p90 (passing_p90)','KP_p90 (possession_p90)','npxG_p90 (shooting_p90)','TB_p90 (passing_types_p90)', 
-                 'Receiving Prog_p90 (possession_p90)', 'npxG/Shot (possession_p90)']]
+elif pos == 'Defensive Midfield':
+    df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)',
+             'Padj Tkl+Int p90 (defense_Padj_p90)','% of Dribblers Tackled (possession_p90)',
+             'Completed Passes_p90 (passing_p90)','Long Cmp_p90 (passing_p90)','Long Att_p90 (passing_p90)',
+             'Press_p90 (passing_types_p90)','Prog Passes_p90 per 50 passes (possession_p90)',
+             'Prog Carries_p90 per 100 touches (possession_p90)',
+             'Passes into Final 1/3_p90 (possession_p90)','Prog Carries_p90 (possession_p90)',
+             'Prog Passes_p90 (possession_p90)','Clr_p90 (defense_Padj_p90)','True Interceptions_p90 (possession_p90)']]
 
-    elif pos == 'Central Midfield':
-        df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)',
-                 'Padj Tkl+Int p90 (defense_Padj_p90)','Completed Passes_p90 (passing_p90)','Press_p90 (passing_types_p90)',
-                 'Passes into Final 1/3_p90 (possession_p90)','Prog Carries_p90 (possession_p90)',
-                 'Prog Carries_p90 per 100 touches (possession_p90)',
-                 'Prog Passes_p90 (possession_p90)','Carries into Final 1/3_p90 (possession_p90)',
-                 'Passes into Penalty Area_p90 (possession_p90)','xA_p90 (passing_p90)','KP_p90 (possession_p90)',
-                 'TB_p90 (passing_types_p90)','Receiving Prog_p90 (possession_p90)']]
+elif pos == 'Attacking Midfield':
+    df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)',
+             'Completed Passes_p90 (passing_p90)','Press_p90 (passing_types_p90)','Prog Carries_p90 per 100 touches (possession_p90)',
+             'Passes into Final 1/3_p90 (possession_p90)','Prog Carries_p90 (possession_p90)',
+             'Prog Passes_p90 (possession_p90)','Carries into Final 1/3_p90 (possession_p90)',
+             'Passes into Penalty Area_p90 (possession_p90)','Carries into Penalty Area_p90 (possession_p90)',
+             'xA_p90 (passing_p90)','KP_p90 (possession_p90)','npxG_p90 (shooting_p90)','TB_p90 (passing_types_p90)', 
+             'Receiving Prog_p90 (possession_p90)', 'npxG/Shot (possession_p90)']]
 
-    elif (pos == 'Centre-Forward') or (pos == 'Second Striker'):
-        df = df[['Player','Squad','Age','xA_p90 (passing_p90)','Passes into Penalty Area_p90 (possession_p90)',
-                 'Carries into Penalty Area_p90 (possession_p90)','npxG_p90 (shooting_p90)', 'npxG/Shot (possession_p90)',
-                 'Sh_p90 (possession_p90)','Successful Dribbles_p90 (possession_p90)','SoT_p90 (possession_p90)','Aerial Win % (possession_p90)',
-                 'Won_p90 (misc_p90)','Receiving Prog_p90 (possession_p90)','SCA_p90 (gca_p90)','KP_p90 (possession_p90)','Off_p90 (misc_p90)',
-                 'Average Shot Distance (yards) (possession_p90)']]
+elif pos == 'Central Midfield':
+    df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)',
+             'Padj Tkl+Int p90 (defense_Padj_p90)','Completed Passes_p90 (passing_p90)','Press_p90 (passing_types_p90)',
+             'Passes into Final 1/3_p90 (possession_p90)','Prog Carries_p90 (possession_p90)',
+             'Prog Carries_p90 per 100 touches (possession_p90)',
+             'Prog Passes_p90 (possession_p90)','Carries into Final 1/3_p90 (possession_p90)',
+             'Passes into Penalty Area_p90 (possession_p90)','xA_p90 (passing_p90)','KP_p90 (possession_p90)',
+             'TB_p90 (passing_types_p90)','Receiving Prog_p90 (possession_p90)']]
 
-    elif pos == 'Goalkeeper':
-        df = df[['Player','Squad','Age','Completed Passes_p90 (passing_p90)','SoTA_p90 (keepers_p90)', 'Saves_p90 (keepers_p90)','Stp_p90 (keepersadv_p90)',
-                 '#OPA_p90 (keepersadv_p90)', 'AvgDist_p90 (keepersadv_p90)','PSxG+/-_p90 (keepersadv_p90)', 'Cmp_p90 (keepersadv_p90)', 
-                 'Att_p90 (keepersadv_p90)', 'Passes Att_p90 (keepersadv_p90)', 'Thr_p90 (keepersadv_p90)', 'AvgLen_p90 (keepersadv_p90)']]
+elif (pos == 'Centre-Forward') or (pos == 'Second Striker'):
+    df = df[['Player','Squad','Age','xA_p90 (passing_p90)','Passes into Penalty Area_p90 (possession_p90)',
+             'Carries into Penalty Area_p90 (possession_p90)','npxG_p90 (shooting_p90)', 'npxG/Shot (possession_p90)',
+             'Sh_p90 (possession_p90)','Successful Dribbles_p90 (possession_p90)','SoT_p90 (possession_p90)','Aerial Win % (possession_p90)',
+             'Won_p90 (misc_p90)','Receiving Prog_p90 (possession_p90)','SCA_p90 (gca_p90)','KP_p90 (possession_p90)','Off_p90 (misc_p90)',
+             'Average Shot Distance (yards) (possession_p90)']]
+
+elif pos == 'Goalkeeper':
+    df = df[['Player','Squad','Age','Completed Passes_p90 (passing_p90)','SoTA_p90 (keepers_p90)', 'Saves_p90 (keepers_p90)','Stp_p90 (keepersadv_p90)',
+             '#OPA_p90 (keepersadv_p90)', 'AvgDist_p90 (keepersadv_p90)','PSxG+/-_p90 (keepersadv_p90)', 'Cmp_p90 (keepersadv_p90)', 
+             'Att_p90 (keepersadv_p90)', 'Passes Att_p90 (keepersadv_p90)', 'Thr_p90 (keepersadv_p90)', 'AvgLen_p90 (keepersadv_p90)']]
 
 #     elif pos == 'Second Striker':
 #         df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)', 'Sh_p90 (possession_p90)', 'SoT_p90 (possession_p90)',
@@ -283,85 +283,85 @@ with st.sidebar:
 #                  'Aerial Win % (possession_p90)','Won_p90 (misc_p90)', 'Receiving Prog_p90 (possession_p90)',
 #                  'npxG/Shot (possession_p90)','Off_p90 (misc_p90)','Average Shot Distance (yards) (possession_p90)']]
 
-    elif pos == 'Centre-Back':
-        df = df[['Player','Squad','Age',
-                 'Padj Tkl+Int p90 (defense_Padj_p90)','% of Dribblers Tackled (possession_p90)',
-                 'Completed Passes_p90 (passing_p90)','Long Cmp_p90 (passing_p90)','Long Att_p90 (passing_p90)',
-                 'Prog Carries_p90 per 100 touches (possession_p90)',
-                 'Prog Passes_p90 per 50 passes (possession_p90)','Passes into Final 1/3_p90 (possession_p90)',
-                 'Prog Carries_p90 (possession_p90)','Prog Passes_p90 (possession_p90)','Clr_p90 (defense_Padj_p90)',
-                 'Shots Blocked_p90 (possession_p90)', 'Pass_p90 (defense_Padj_p90)',
-                 'Aerial Win % (possession_p90)','Won_p90 (misc_p90)','True Interceptions_p90 (possession_p90)']]
- 
-   
-    df = df.dropna()
-    #Reset index
-    df.reset_index(inplace=True)
-    df.drop(['index'],axis=1,inplace=True)
-    bkup_df = df.copy()
-    
-    #Scale all the required features, as some may be absolute values and some may be percentages
-    scaler = create_scaler_model()
-    scaler.fit(df.drop(['Player','Squad','Age'],axis=1))
-    scaled_features = scaler.transform(df.drop(['Player','Squad','Age'],axis=1))
-    scaled_feat_df = pd.DataFrame(scaled_features,columns=df.columns[3:])
-    
-    df = pd.concat([df[['Player','Squad','Age']],scaled_feat_df],axis=1)
-    
-    #Get the scaled features
-    X = np.array(df.iloc[:,3:])
-        
-    #Create a model to find k using elbow method
-    calc_k_model = KMeans()
-    
-    #Find ideal k (number of clusters) using elbow method
-    visualizer = KElbowVisualizer(calc_k_model, k=(1,10), timings= True)
-    visualizer.fit(X)        # Fit data to visualizer
+elif pos == 'Centre-Back':
+    df = df[['Player','Squad','Age',
+             'Padj Tkl+Int p90 (defense_Padj_p90)','% of Dribblers Tackled (possession_p90)',
+             'Completed Passes_p90 (passing_p90)','Long Cmp_p90 (passing_p90)','Long Att_p90 (passing_p90)',
+             'Prog Carries_p90 per 100 touches (possession_p90)',
+             'Prog Passes_p90 per 50 passes (possession_p90)','Passes into Final 1/3_p90 (possession_p90)',
+             'Prog Carries_p90 (possession_p90)','Prog Passes_p90 (possession_p90)','Clr_p90 (defense_Padj_p90)',
+             'Shots Blocked_p90 (possession_p90)', 'Pass_p90 (defense_Padj_p90)',
+             'Aerial Win % (possession_p90)','Won_p90 (misc_p90)','True Interceptions_p90 (possession_p90)']]
+
+
+df = df.dropna()
+#Reset index
+df.reset_index(inplace=True)
+df.drop(['index'],axis=1,inplace=True)
+bkup_df = df.copy()
+
+#Scale all the required features, as some may be absolute values and some may be percentages
+scaler = create_scaler_model()
+scaler.fit(df.drop(['Player','Squad','Age'],axis=1))
+scaled_features = scaler.transform(df.drop(['Player','Squad','Age'],axis=1))
+scaled_feat_df = pd.DataFrame(scaled_features,columns=df.columns[3:])
+
+df = pd.concat([df[['Player','Squad','Age']],scaled_feat_df],axis=1)
+
+#Get the scaled features
+X = np.array(df.iloc[:,3:])
+
+#Create a model to find k using elbow method
+calc_k_model = KMeans()
+
+#Find ideal k (number of clusters) using elbow method
+visualizer = KElbowVisualizer(calc_k_model, k=(1,10), timings= True)
+visualizer.fit(X)        # Fit data to visualizer
 #     ideal_k = visualizer.elbow_value_ #Get the elbow value
 #     ideal_k = get_ideal_k(calc_k_model,X)
-    
-    st.write('Number of clusters calculated:',visualizer.elbow_value_)
-    
-    #Create a K Means model with ideal number of clusters
-    kmeans = KMeans(n_clusters=visualizer.elbow_value_)
-    kmeans.fit(X)
-    
-    #Add a cluster column and assign a cluster to each player
-    df['cluster'] = kmeans.predict(X)
 
-    #Get the cluster value of player in question
-    clus = df[df['Player'] == player]['cluster']
+st.write('Number of clusters calculated:',visualizer.elbow_value_)
 
-    #Filter and keep only players who are in the same cluster as player in question
-    df = df[df['cluster'] == int(clus)]    
-    #Reset index
-    df.reset_index(inplace=True)
-    df.drop(['index'],axis=1,inplace=True)
+#Create a K Means model with ideal number of clusters
+kmeans = KMeans(n_clusters=visualizer.elbow_value_)
+kmeans.fit(X)
 
-    #Get the list of values of the same cluster players for calculating similarity score
-    player_list = df[df['Player'] == player].values.tolist()
-    others_list = df[df['Player'] != player].values.tolist()
+#Add a cluster column and assign a cluster to each player
+df['cluster'] = kmeans.predict(X)
 
-    #Get index of player in question
-    ind = df[df['Player'] == player_list[0][0]].index[0]
-    df['Similarity Score'] = ''
-    #Assign similarity score 0 for player in question
-    df['Similarity Score'][ind] = 0
-    
-    #Calculate similarity score
-    for elem in others_list:
-        sim_score = 0
-        #Calculate similarity score using Euclidian distance
-        for i in range(3,len(player_list[0])-1):
-            sim_score += pow(player_list[0][i] - elem[i],2)
-        sim_score = math.sqrt(sim_score)
-        ind = df[df['Player'] == elem[0]].index
-        df['Similarity Score'][ind] = sim_score
-    
-    #Filter for the players between the selected ages
-    df = df[(df['Age'] >= start_age) & (df['Age'] <= end_age)]
-    #Sort the dataframe according to similarity score
-    df = df.sort_values('Similarity Score')
+#Get the cluster value of player in question
+clus = df[df['Player'] == player]['cluster']
+
+#Filter and keep only players who are in the same cluster as player in question
+df = df[df['cluster'] == int(clus)]    
+#Reset index
+df.reset_index(inplace=True)
+df.drop(['index'],axis=1,inplace=True)
+
+#Get the list of values of the same cluster players for calculating similarity score
+player_list = df[df['Player'] == player].values.tolist()
+others_list = df[df['Player'] != player].values.tolist()
+
+#Get index of player in question
+ind = df[df['Player'] == player_list[0][0]].index[0]
+df['Similarity Score'] = ''
+#Assign similarity score 0 for player in question
+df['Similarity Score'][ind] = 0
+
+#Calculate similarity score
+for elem in others_list:
+    sim_score = 0
+    #Calculate similarity score using Euclidian distance
+    for i in range(3,len(player_list[0])-1):
+        sim_score += pow(player_list[0][i] - elem[i],2)
+    sim_score = math.sqrt(sim_score)
+    ind = df[df['Player'] == elem[0]].index
+    df['Similarity Score'][ind] = sim_score
+
+#Filter for the players between the selected ages
+df = df[(df['Age'] >= start_age) & (df['Age'] <= end_age)]
+#Sort the dataframe according to similarity score
+df = df.sort_values('Similarity Score')
 
 radar_df = df.copy()
 df = df[['Player','Similarity Score']]
