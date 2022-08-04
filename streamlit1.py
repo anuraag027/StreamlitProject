@@ -377,16 +377,18 @@ with col2:
     radar_df.drop(['index'],axis=1,inplace=True)
     
     #Radar will be plotted for 3 players APART from the selected player
-    try:
+    try: #Anuraag
         if df['Player'][0] == player:
             n = min(4,len(radar_df))
         else:
             n = min(3,len(radar_df))
+            
+        #Plot the radar
+        try_list = plot_radar(bkup = bkup_df,df = radar_df,n = n)
+
     except:
         print('The search list is too narrow/no players exist in the same cluster for the selected position. Please add more positions to the search list')
-    #Plot the radar
-    try_list = plot_radar(bkup = bkup_df,df = radar_df,n = n)
-
+    
 #Metric descriptions
 try_list = [ele.rstrip().replace('\n','') for ele in try_list]
 
