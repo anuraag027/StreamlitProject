@@ -147,18 +147,38 @@ with st.sidebar:
 #     df = df[df['TMPosition'] == pos]
 #     if 'WingBack' in pos:
 #         df = df[df['TMPosition'].isin(['Left WingBack','Right WingBack'])]
-    if pos in ['Right-Back','Left-Back','Left WingBack','Right WingBack']:
-        df = df[df['TMPosition'].isin(['Right-Back','Left-Back','Left WingBack','Right WingBack'])]
-        st.write(player,"plays at position: Fullback/Wingback")
-    elif pos in ['Right Winger','Left Winger']:
-        df = df[df['TMPosition'].isin(['Right Winger','Left Winger'])]
-        st.write(player,"plays at position: Winger")
-    elif pos in ['Centre-Forward','Second Striker']:
-        df = df[df['TMPosition'].isin(['Centre-Forward','Second Striker'])]
-        st.write(player,"plays at position: Striker/Second Striker")
+
+#     if pos in ['Right-Back','Left-Back','Left WingBack','Right WingBack']:
+#         df = df[df['TMPosition'].isin(['Right-Back','Left-Back','Left WingBack','Right WingBack'])]
+#         st.write(player,"plays at position: Fullback/Wingback")
+#     elif pos in ['Right Winger','Left Winger']:
+#         df = df[df['TMPosition'].isin(['Right Winger','Left Winger'])]
+#         st.write(player,"plays at position: Winger")
+#     elif pos in ['Centre-Forward','Second Striker']:
+#         df = df[df['TMPosition'].isin(['Centre-Forward','Second Striker'])]
+#         st.write(player,"plays at position: Striker/Second Striker")
+#     else:
+#         df = df[df['TMPosition'] == pos]
+#         st.write(player,"plays at position:",pos)
+    
+    if len(options) > 1:
+        df = df[df['TMPosition'].isin(options)]
+        st.write(player,"plays at position:" pos)
     else:
         df = df[df['TMPosition'] == pos]
         st.write(player,"plays at position:",pos)
+    
+    if pos in ['Right-Back','Left-Back','Left WingBack','Right WingBack']:
+        options = st.multiselect('Choose from these positions to narrow down results',['Right-Back','Left-Back','Left WingBack','Right WingBack'],
+                                ['Right-Back','Left-Back','Left WingBack','Right WingBack'])
+    elif pos in ['Right Winger','Left Winger']:
+        options = st.multiselect('Choose from these positions to narrow down results',['Right Winger','Left Winger'],
+                                ['Right Winger','Left Winger'])
+    elif pos in ['Centre-Forward','Second Striker']:
+        options = st.multiselect('Choose from these positions to narrow down results',['Centre-Forward','Second Striker'],
+                                ['Centre-Forward','Second Striker'])
+#     else:
+#         options = pos
     
     #Age slider
     start_age, end_age = st.slider(
