@@ -142,6 +142,7 @@ with st.sidebar:
 
     #Get the position for that player
     pos = df[df['Player'] == player]['TMPosition'].values[0]
+    st.write(player,"plays at position:",pos)
     
     #Filter all players that play in that position
 #     df = df[df['TMPosition'] == pos]
@@ -175,10 +176,10 @@ with st.sidebar:
     
     if len(options) > 1:
         df = df[df['TMPosition'].isin(options)]
-        st.write(player,"plays at position:",pos)
+#         st.write(player,"plays at position:",pos)
     else:
         df = df[df['TMPosition'] == pos]
-        st.write(player,"plays at position:",pos)
+#         st.write(player,"plays at position:",pos)
     
     #Age slider
     start_age, end_age = st.slider(
