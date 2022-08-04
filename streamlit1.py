@@ -386,11 +386,11 @@ with col2:
         #Plot the radar
         try_list = plot_radar(bkup = bkup_df,df = radar_df,n = n)
 
+        #Metric descriptions
+        try_list = [ele.rstrip().replace('\n','') for ele in try_list]
+        
     except:
         print('The search list is too narrow/no players exist in the same cluster for the selected position. Please add more positions to the search list')
-    
-#Metric descriptions
-try_list = [ele.rstrip().replace('\n','') for ele in try_list]
 
 #Dictionary mapping every metric to its description
 test_dic = {
