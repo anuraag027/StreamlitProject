@@ -272,9 +272,9 @@ with st.sidebar:
                  'Shots Blocked_p90 (possession_p90)', 'Pass_p90 (defense_Padj_p90)',
                  'Aerial Win % (possession_p90)','Won_p90 (misc_p90)','True Interceptions_p90 (possession_p90)']]
 
-#Reset index
-df.reset_index(inplace=True)
-df.drop(['index'],axis=1,inplace=True)
+    #Reset index
+    df.reset_index(inplace=True)
+    df.drop(['index'],axis=1,inplace=True)
 
  
    
