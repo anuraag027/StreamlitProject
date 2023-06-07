@@ -199,75 +199,83 @@ with st.sidebar:
     #Metric usage for every position
     if (pos == 'Right-Back') or (pos == 'Left-Back') or (pos == 'Left WingBack') or (pos == 'Right WingBack'):
         df = df[['Player','Squad','Age','Padj Tkl+Int p90 (defense_Padj_p90)','% of Dribblers Tackled (possession_p90)','Crs_p90 (passing_types_p90)',
-                 'SCA_p90 (gca_p90)',
-                 'xA_p90 (passing_p90)','Prog Actions_p90 (possession_p90)','Passes into Final 1/3_p90 (possession_p90)',
-                 'Carries into Final 1/3_p90 (possession_p90)','KP_p90 (possession_p90)','TB_p90 (passing_types_p90)',
-                 'True Interceptions_p90 (possession_p90)','Prog Carries_p90 per 100 touches (possession_p90)']]
+                 'SCA_p90 (gca_p90)','Prog Actions_p90 (possession_p90)','Passes into Final 1/3_p90 (passing_p90)',
+                 'Carries into Final 1/3_p90 (possession_p90)','xA per KP p90 (passing_p90)','TB_p90 (passing_types_p90)',
+                 'True Interceptions_p90 (possession_p90)','Prog Carries_p90 per 100 touches (possession_p90)', 
+                 'Prog Passes Received_p90 (stats_p90)']]
 
     elif (pos == 'Right Winger') or (pos == 'Left Winger'):
-        df = df[['Player','Squad','Age','xA_p90 (passing_p90)','KP_p90 (possession_p90)','Successful Dribbles_p90 (possession_p90)',
-                 'Attempted Dribbles_p90 (possession_p90)','Passes into Penalty Area_p90 (possession_p90)',
-                 'Carries into Penalty Area_p90 (possession_p90)','npxG_p90 (shooting_p90)', 'npxG/Shot (possession_p90)',
+        df = df[['Player','Squad','Age','xA per KP p90 (passing_p90)','KP p90 per 50 passes (passing_p90)','Successful Dribbles_p90 (possession_p90)',
+                 'Attempted Dribbles_p90 (possession_p90)','Passes into Penalty Area_p90 (passing_p90)',
+                 'Carries into Penalty Area_p90 (possession_p90)','npxG_p90 (shooting_p90)', 'npxG/Sh_p90 (shooting_p90)',
                  'Prog Actions_p90 (possession_p90)','Crs_p90 (passing_types_p90)','TB_p90 (passing_types_p90)',
                  'Prog Carries_p90 per 100 touches (possession_p90)', 'Sh_p90 (possession_p90)', 'SoT_p90 (possession_p90)', 
-                 'Receiving Prog_p90 (possession_p90)','Prog Carries_p90 (possession_p90)','Prog Passes_p90 (possession_p90)',
+                 'Prog Passes Received_p90 (stats_p90)','Prog Carries_p90 (possession_p90)','Prog Passes_p90 (passing_p90)',
                  'Prog Passes_p90 per 50 passes (possession_p90)','Off_p90 (misc_p90)']]
 
     elif pos == 'Defensive Midfield':
         df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)',
                  'Padj Tkl+Int p90 (defense_Padj_p90)','% of Dribblers Tackled (possession_p90)',
                  'Completed Passes_p90 (passing_p90)','Long Cmp_p90 (passing_p90)','Long Att_p90 (passing_p90)',
-                 'Press_p90 (passing_types_p90)','Prog Passes_p90 per 50 passes (possession_p90)',
+                 'Prog Passes_p90 per 50 passes (possession_p90)',
                  'Prog Carries_p90 per 100 touches (possession_p90)',
-                 'Passes into Final 1/3_p90 (possession_p90)','Prog Carries_p90 (possession_p90)',
-                 'Prog Passes_p90 (possession_p90)','Clr_p90 (defense_Padj_p90)','True Interceptions_p90 (possession_p90)']]
+                 'Passes into Final 1/3_p90 (passing_p90)','Prog Carries_p90 (possession_p90)',
+                 'Prog Passes_p90 (passing_p90)','Clr_p90 (defense_Padj_p90)','True Interceptions_p90 (possession_p90)']]
+
 
     elif pos == 'Attacking Midfield':
         df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)',
-                 'Completed Passes_p90 (passing_p90)','Press_p90 (passing_types_p90)','Prog Carries_p90 per 100 touches (possession_p90)',
-                 'Passes into Final 1/3_p90 (possession_p90)','Prog Carries_p90 (possession_p90)',
-                 'Prog Passes_p90 (possession_p90)','Carries into Final 1/3_p90 (possession_p90)',
-                 'Passes into Penalty Area_p90 (possession_p90)','Carries into Penalty Area_p90 (possession_p90)',
-                 'xA_p90 (passing_p90)','KP_p90 (possession_p90)','npxG_p90 (shooting_p90)','TB_p90 (passing_types_p90)', 
-                 'Receiving Prog_p90 (possession_p90)', 'npxG/Shot (possession_p90)']]
+                 'Completed Passes_p90 (passing_p90)','Prog Carries_p90 per 100 touches (possession_p90)',
+                 'Passes into Final 1/3_p90 (passing_p90)','Prog Carries_p90 (possession_p90)',
+                 'Prog Passes_p90 (passing_p90)','Carries into Final 1/3_p90 (possession_p90)',
+                 'Passes into Penalty Area_p90 (passing_p90)','Carries into Penalty Area_p90 (possession_p90)',
+                 'xA per KP p90 (passing_p90)','KP p90 per 50 passes (passing_p90)','npxG_p90 (shooting_p90)','TB_p90 (passing_types_p90)', 
+                 'Prog Passes Received_p90 (stats_p90)', 'npxG/Sh_p90 (shooting_p90)']]
 
     elif pos == 'Central Midfield':
-        df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)',
-                 'Padj Tkl+Int p90 (defense_Padj_p90)','Completed Passes_p90 (passing_p90)','Press_p90 (passing_types_p90)',
-                 'Passes into Final 1/3_p90 (possession_p90)','Prog Carries_p90 (possession_p90)',
-                 'Prog Carries_p90 per 100 touches (possession_p90)',
-                 'Prog Passes_p90 (possession_p90)','Carries into Final 1/3_p90 (possession_p90)',
-                 'Passes into Penalty Area_p90 (possession_p90)','xA_p90 (passing_p90)','KP_p90 (possession_p90)',
-                 'TB_p90 (passing_types_p90)','Receiving Prog_p90 (possession_p90)']]
+        df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)',#,'Successful Dribbles_p90 (possession_p90)',
+                 'Padj Tkl+Int p90 (defense_Padj_p90)','Completed Passes_p90 (passing_p90)',
+                 'Passes into Final 1/3_p90 (passing_p90)','Prog Carries_p90 (possession_p90)',
+                 'Prog Carries_p90 per 100 touches (possession_p90)','Attempted Dribbles_p90 (possession_p90)',
+                 'Prog Passes_p90 (passing_p90)','Carries into Final 1/3_p90 (possession_p90)',
+                 'Passes into Penalty Area_p90 (passing_p90)','xA per KP p90 (passing_p90)','KP p90 per 50 passes (passing_p90)',
+                 'TB_p90 (passing_types_p90)','Prog Passes Received_p90 (stats_p90)']]
 
-    elif (pos == 'Centre-Forward') or (pos == 'Second Striker'):
-        df = df[['Player','Squad','Age','xA_p90 (passing_p90)','Passes into Penalty Area_p90 (possession_p90)',
-                 'Carries into Penalty Area_p90 (possession_p90)','npxG_p90 (shooting_p90)', 'npxG/Shot (possession_p90)',
-                 'Sh_p90 (possession_p90)','Successful Dribbles_p90 (possession_p90)','SoT_p90 (possession_p90)','Aerial Win % (possession_p90)',
-                 'Won_p90 (misc_p90)','Receiving Prog_p90 (possession_p90)','SCA_p90 (gca_p90)','KP_p90 (possession_p90)','Off_p90 (misc_p90)',
-                 'Average Shot Distance (yards) (possession_p90)']]
+    elif pos == 'Centre-Forward':
+        df = df[['Player','Squad','Age','xA per KP p90 (passing_p90)','Passes into Penalty Area_p90 (passing_p90)',
+                 'Carries into Penalty Area_p90 (possession_p90)','npxG_p90 (shooting_p90)', 'npxG/Sh_p90 (shooting_p90)',
+                 'Sh_p90 (possession_p90)', 'SoT_p90 (possession_p90)','Aerial Win % (possession_p90)','Won_p90 (misc_p90)',
+                 'Prog Passes Received_p90 (stats_p90)','SCA_p90 (gca_p90)','KP p90 per 50 passes (passing_p90)','Off_p90 (misc_p90)',
+                 'Average Shot Distance (yards) (possession_p90)', 'xAG_p90 (passing_p90)', 'xA_p90 (passing_p90)',
+                 'Prog Passes_p90 (passing_p90)']]
 
-    elif pos == 'Goalkeeper':
-        df = df[['Player','Squad','Age','Completed Passes_p90 (passing_p90)','SoTA_p90 (keepers_p90)', 'Saves_p90 (keepers_p90)','Stp_p90 (keepersadv_p90)',
-                 '#OPA_p90 (keepersadv_p90)', 'AvgDist_p90 (keepersadv_p90)','PSxG+/-_p90 (keepersadv_p90)', 'Cmp_p90 (keepersadv_p90)', 
-                 'Att_p90 (keepersadv_p90)', 'Passes Att_p90 (keepersadv_p90)', 'Thr_p90 (keepersadv_p90)', 'AvgLen_p90 (keepersadv_p90)']]
+    elif pos == 'Goalkeeper': #
+        df = df[['Player','Squad','Age','Att_p90 (keepersadv_p90)','SoTA_p90 (keepers_p90)', 'Saves_p90 (keepers_p90)','Stp_p90 (keepersadv_p90)',
+                 '#OPA_p90 (keepersadv_p90)','PSxG+/-_p90 (keepersadv_p90)', 'Cmp_p90 (keepersadv_p90)', 
+                 'Att_p90 (keepersadv_p90)', 'Passes Att_p90 (keepersadv_p90)', 'Thr_p90 (keepersadv_p90)',
+                 'AvgLen_p90 (keepersadv_p90)', 'AvgDist (keepersadv_p90)']]
 
-#     elif pos == 'Second Striker':
-#         df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)', 'Sh_p90 (possession_p90)', 'SoT_p90 (possession_p90)',
-#                  'Passes into Penalty Area_p90 (possession_p90)','Carries into Penalty Area_p90 (possession_p90)',
-#                  'xA_p90 (passing_p90)','KP_p90 (possession_p90)','npxG_p90 (shooting_p90)','SCA_p90 (gca_p90)',
-#                  'Aerial Win % (possession_p90)','Won_p90 (misc_p90)', 'Receiving Prog_p90 (possession_p90)',
-#                  'npxG/Shot (possession_p90)','Off_p90 (misc_p90)','Average Shot Distance (yards) (possession_p90)']]
+    elif pos == 'Second Striker':
+        df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)', 'Sh_p90 (possession_p90)', 'SoT_p90 (possession_p90)',
+                 'Passes into Penalty Area_p90 (passing_p90)','Carries into Penalty Area_p90 (possession_p90)',
+                 'xA per KP p90 (passing_p90)','KP p90 per 50 passes (passing_p90)','npxG_p90 (shooting_p90)','SCA_p90 (gca_p90)',
+                 'Aerial Win % (possession_p90)','Won_p90 (misc_p90)', 'Prog Passes Received_p90 (stats_p90)',
+                 'npxG/Sh_p90 (shooting_p90)','Off_p90 (misc_p90)','Average Shot Distance (yards) (possession_p90)']]
 
     elif pos == 'Centre-Back':
         df = df[['Player','Squad','Age',
                  'Padj Tkl+Int p90 (defense_Padj_p90)','% of Dribblers Tackled (possession_p90)',
                  'Completed Passes_p90 (passing_p90)','Long Cmp_p90 (passing_p90)','Long Att_p90 (passing_p90)',
                  'Prog Carries_p90 per 100 touches (possession_p90)',
-                 'Prog Passes_p90 per 50 passes (possession_p90)','Passes into Final 1/3_p90 (possession_p90)',
-                 'Prog Carries_p90 (possession_p90)','Prog Passes_p90 (possession_p90)','Clr_p90 (defense_Padj_p90)',
+                 'Prog Passes_p90 per 50 passes (possession_p90)','Passes into Final 1/3_p90 (passing_p90)',
+                 'Prog Carries_p90 (possession_p90)','Prog Passes_p90 (passing_p90)','Clr_p90 (defense_Padj_p90)',
                  'Shots Blocked_p90 (possession_p90)', 'Pass_p90 (defense_Padj_p90)',
                  'Aerial Win % (possession_p90)','Won_p90 (misc_p90)','True Interceptions_p90 (possession_p90)']]
+
+#Reset index
+df.reset_index(inplace=True)
+df.drop(['index'],axis=1,inplace=True)
+
  
    
     df = df.dropna()
