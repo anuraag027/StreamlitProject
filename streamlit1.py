@@ -15,7 +15,7 @@ warnings.filterwarnings('ignore')
 # ADDING CACHE OPTION
 @st.cache
 def load_data(): #Function to load csv data into dataframe
-    df = pd.read_csv('Data/All_stats_combined_with_positions.csv')
+    df = pd.read_csv('Data/All_stats_combined_with_positions_22_23.csv')
     df.drop(df[df['TMPosition'] == 'Goalkeeper'].index, inplace=True)
     return df
 df = load_data()
