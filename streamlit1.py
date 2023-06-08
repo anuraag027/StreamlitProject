@@ -211,7 +211,7 @@ with st.sidebar:
                  'Crs_p90 (passing_types_p90)','TB_p90 (passing_types_p90)',
                  'Prog Carries_p90 per 100 touches (possession_p90)', 'Sh_p90 (shooting_p90)', 'SoT_p90 (shooting_p90)', 
                  'Prog Passes Received_p90 (stats_p90)','Prog Carries_p90 (possession_p90)','Prog Passes_p90 (passing_p90)',
-                 'Prog Passes_p90 per 50 passes (passing_p90)','Off_p90 (misc_p90)','Average Shot Distance (yards) (shooting_p90)']]
+                 'Prog Passes_p90 per 50 passes (passing_p90)','Off_p90 (misc_p90)','Average Shot Distance (shooting_p90)']]
 
     # elif pos == 'Defensive Midfield':
     #     df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)',
@@ -239,7 +239,7 @@ with st.sidebar:
                  'Prog Passes_p90 (passing_p90)','Prog Passes_p90 per 50 passes (passing_p90)','Carries into Final 1/3_p90 (possession_p90)',
                  'Passes into Penalty Area_p90 (passing_p90)','Carries into Penalty Area_p90 (possession_p90)',
                  'xA per KP p90 (passing_p90)','KP p90 per 50 passes (passing_p90)','npxG_p90 (shooting_p90)','TB_p90 (passing_types_p90)', 
-                 'Prog Passes Received_p90 (stats_p90)', 'npxG/Sh_p90 (shooting_p90)','Average Shot Distance (yards) (shooting_p90)']]
+                 'Prog Passes Received_p90 (stats_p90)', 'npxG/Sh_p90 (shooting_p90)','Average Shot Distance (shooting_p90)']]
 
     elif pos == 'Central Midfield':
         df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)',#,'Successful Dribbles_p90 (possession_p90)',
@@ -255,7 +255,7 @@ with st.sidebar:
                  'Carries into Penalty Area_p90 (possession_p90)','npxG_p90 (shooting_p90)', 'npxG/Sh_p90 (shooting_p90)',
                  'Sh_p90 (shooting_p90)', 'SoT_p90 (shooting_p90)','Aerial Win % (misc_p90)','Won_p90 (misc_p90)',
                  'Prog Passes Received_p90 (stats_p90)','SCA_p90 (gca_p90)','KP p90 per 50 passes (passing_p90)','Off_p90 (misc_p90)',
-                 'Average Shot Distance (yards) (shooting_p90)', 'xAG_p90 (passing_p90)', 'xA_p90 (passing_p90)',
+                 'Average Shot Distance (shooting_p90)', 'xAG_p90 (passing_p90)', 'xA_p90 (passing_p90)',
                  'Prog Passes_p90 (passing_p90)']]
 
     elif pos == 'Goalkeeper': #
@@ -269,7 +269,7 @@ with st.sidebar:
                  'Passes into Penalty Area_p90 (passing_p90)','Carries into Penalty Area_p90 (possession_p90)',
                  'xA per KP p90 (passing_p90)','KP p90 per 50 passes (passing_p90)','npxG_p90 (shooting_p90)','SCA_p90 (gca_p90)',
                  'Aerial Win % (misc_p90)','Won_p90 (misc_p90)', 'Prog Passes Received_p90 (stats_p90)',
-                 'npxG/Sh_p90 (shooting_p90)','Off_p90 (misc_p90)','Average Shot Distance (yards) (shooting_p90)']]
+                 'npxG/Sh_p90 (shooting_p90)','Off_p90 (misc_p90)','Average Shot Distance (shooting_p90)']]
 
     elif pos == 'Centre-Back':
         df = df[['Player','Squad','Age',
