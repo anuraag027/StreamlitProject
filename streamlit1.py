@@ -263,6 +263,7 @@ with st.sidebar:
                  'npxG/Sh_p90 (shooting_p90)','Off_p90 (misc_p90)','Average Shot Distance (shooting_p90)']]
 
     elif pos == 'Centre-Back':
+        st.write(df.columns)
         df = df[['Player','Squad','Age',
                  'Padj Tkl+Int p90 (defense_Padj_p90)','Percent of Dribblers Tackled (defense_Padj_p90)',
                  'Completed Passes_p90 (passing_p90)','Long Cmp_p90 (passing_p90)','Long Att_p90 (passing_p90)',
