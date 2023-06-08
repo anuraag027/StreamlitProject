@@ -265,7 +265,7 @@ with st.sidebar:
     elif pos == 'Centre-Back':
 #         st.write(df.columns)
         for col in df.columns:
-            st.write(df[col].dtype)
+            st.write(col, ' = ', df[col].dtype)
         df = df[['Player','Squad','Age',
                  'Padj Tkl+Int p90 (defense_Padj_p90)','Percent of Dribblers Tackled (defense_Padj_p90)',
                  'Completed Passes_p90 (passing_p90)','Long Cmp_p90 (passing_p90)','Long Att_p90 (passing_p90)',
