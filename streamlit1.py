@@ -197,8 +197,9 @@ with st.sidebar:
 #         st.write(player,"plays at position:",pos)
         
     #Metric usage for every position
-    st.write(df.columns)
     if (pos == 'Right-Back') or (pos == 'Left-Back') or (pos == 'Left WingBack') or (pos == 'Right WingBack'):
+        st.write(df.columns)
+        print(df.columns)
         df = df[['Player','Squad','Age','Padj Tkl+Int p90 (defense_Padj_p90)','% of Dribblers Tackled (defense_Padj_p90)','Crs_p90 (passing_types_p90)',
                  'SCA_p90 (gca_p90)','Prog Passes_p90 (passing_p90)','Passes into Final 1/3_p90 (passing_p90)',
                  'Carries into Final 1/3_p90 (possession_p90)','xA per KP p90 (passing_p90)','TB_p90 (passing_types_p90)',
