@@ -281,12 +281,6 @@ with st.sidebar:
                  'Prog Carries_p90 (possession_p90)','Prog Passes_p90 (passing_p90)','Clr_p90 (defense_Padj_p90)',
                  'Shots Blocked_p90 (possession_p90)', 'Pass_p90 (defense_Padj_p90)',
                  'Aerial Win % (misc_p90)','Won_p90 (misc_p90)','True Interceptions_p90 (defense_p90)']]
-
-    #Reset index
-    df.reset_index(inplace=True)
-    df.drop(['index'],axis=1,inplace=True)
-
- 
    
     df = df.dropna()
     #Reset index
