@@ -207,7 +207,7 @@ with st.sidebar:
                  'Prog Passes_p90 per 50 passes (passing_p90)','Off_p90 (misc_p90)','Average Shot Distance (shooting_p90)']]
 
     elif pos == 'Defensive Midfield':
-        df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)','Passes into Final 1/3_p90 (passing_p90)',
+        df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)',
                  'Padj Tkl+Int p90 (defense_Padj_p90)','Percent of Dribblers Tackled (defense_Padj_p90)',
                  'Completed Passes_p90 (passing_p90)','Long Cmp_p90 (passing_p90)','Long Att_p90 (passing_p90)',
                  'Prog Passes_p90 per 50 passes (passing_p90)',
