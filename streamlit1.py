@@ -138,7 +138,7 @@ def plot_radar(bkup,df,n):
 #END OF PLOT RADAR FUNCTION
 
 #Remove the Unnamed & rank columns
-df = df.iloc[:,3:]
+# df = df.iloc[:,3:]
 
 # Widget sidebar, "with" notation
 with st.sidebar:
