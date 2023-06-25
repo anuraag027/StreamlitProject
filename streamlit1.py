@@ -21,7 +21,7 @@ def load_data(): #Function to load csv data into dataframe
 df,gk_df = load_data()
 # @st.cache(allow_output_mutation=True)
 
-# st.write(gk_df[gk_df['Player'] == 'Ederson'])
+st.write(gk_df[gk_df['Player'] == 'Alisson']['TMPosition'])
 
 def create_scaler_model(): #Function to create standard scaler model
     return StandardScaler()
@@ -269,8 +269,6 @@ with st.sidebar:
                  'Shots Blocked_p90 (defense_p90)', 'Pass_p90 (defense_Padj_p90)', 'Def 3rd_p90 (possession_p90)', 'Mid 3rd_p90 (possession_p90)', 'Att 3rd_p90 (possession_p90)','Live_p90 (possession_p90)',
                  'Aerial Win Rate (misc_p90)','Won_p90 (misc_p90)','True Interceptions_p90 (defense_p90)']]
 
-
-    st.write(df[df['Player'] == 'Ederson']['TMPosition'])
     #Reset index
     df.reset_index(inplace=True)
     df.drop(['index'],axis=1,inplace=True)
