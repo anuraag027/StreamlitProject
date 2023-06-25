@@ -278,8 +278,6 @@ with st.sidebar:
     df.reset_index(inplace=True)
     df.drop(['index'],axis=1,inplace=True)
     bkup_df = df.copy()
-
-    st.write(df)
     
     #Scale all the required features, as some may be absolute values and some may be percentages
     scaler = create_scaler_model()
