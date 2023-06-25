@@ -88,7 +88,7 @@ def plot_radar(bkup,df,n):
     #Form minimum and maximum values for radar plot
     st.write(params)
     for x in params:
-        st.write('x',x)
+        st.write('x',df[x])
         # a = min(df[params][x])
         a = min(df[x])
         st.write('a',a)
