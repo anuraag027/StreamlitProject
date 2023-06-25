@@ -89,7 +89,8 @@ def plot_radar(bkup,df,n):
     st.write(params)
     for x in params:
         st.write('x',x)
-        a = min(df[params][x])
+        # a = min(df[params][x])
+        a = min(df[x])
         st.write('a',a)
         a = a - (a*.1)
 
