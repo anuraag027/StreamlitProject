@@ -19,6 +19,7 @@ def load_data(): #Function to load csv data into dataframe
     df.drop(df[df['TMPosition'] == 'Goalkeeper'].index, inplace=True)
     return df
 df = load_data()
+df.reset_index(inplace=True)
 
 # @st.cache(allow_output_mutation=True)
 # def create_kmeans_model(k=8): #Function to create K Means model
