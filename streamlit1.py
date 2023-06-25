@@ -151,6 +151,10 @@ with st.sidebar:
     #Get the position for that player
     pos = df[df['Player'] == player]['TMPosition'].values[0]
     
+    #GOALKEEPER
+    if pos == 'Goalkeeper':
+        df = gk_df.copy()
+    
     #Filter all players that play in that position
 #     df = df[df['TMPosition'] == pos]
 #     if 'WingBack' in pos:
@@ -284,7 +288,6 @@ with st.sidebar:
     df.reset_index(inplace=True)
     df.drop(['index'],axis=1,inplace=True)
 
-   
     df = df.dropna()
     #Reset index
     df.reset_index(inplace=True)
