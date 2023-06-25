@@ -16,18 +16,10 @@ warnings.filterwarnings('ignore')
 @st.cache
 def load_data(): #Function to load csv data into dataframe
     df = pd.read_csv('Data/All_stats_combined_with_positions_22_23.csv', encoding='utf-8')
-    gk_df = pd.read_csv('Data/Gk_stats_combined_with_positions.csv', encoding='utf-8')
-    # st.write(df.columns)
-    # df.drop(df[df['TMPosition'] == 'Goalkeeper'].index, inplace=True)
-    # st.write(df.columns)
-    # df.reset_index(inplace=True)
-    # df.drop(['index'],axis=1,inplace=True)
+    gk_df = pd.read_csv('Data/Gk_stats_combined_with_positions.csv')#, encoding='utf-8')
     return df,gk_df
 df,gk_df = load_data()
 st.write(gk_df.columns,len(gk_df.columns))
-# df.reset_index(inplace=True)
-# df.drop(['index'],axis=1,inplace=True)
-# st.write(df.columns)
 
 # @st.cache(allow_output_mutation=True)
 # def create_kmeans_model(k=8): #Function to create K Means model
@@ -46,7 +38,6 @@ st.write(gk_df.columns,len(gk_df.columns))
 def create_scaler_model(): #Function to create standard scaler model
     return StandardScaler()
 
-#Drop Goalkeepers for now
 st.header('Use Machine Learning to Find Players of Similar Profiles')
 st.caption('Select a player, and my Machine Learning model will suggest similar players.')
 st.caption('Currently works for outfield positions for players playing in any one of Europe\'s Top 5 Leagues - Premier League, La Liga, Seria A, Ligue 1 and Bundesliga.')
