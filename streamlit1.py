@@ -270,7 +270,7 @@ with st.sidebar:
                  'Aerial Win Rate (misc_p90)','Won_p90 (misc_p90)','True Interceptions_p90 (defense_p90)']]
 
 
-    st.write(df[df['Player'] == 'Alisson'])
+    st.write(df[df['Player'] == 'Ederson'])
     #Reset index
     df.reset_index(inplace=True)
     df.drop(['index'],axis=1,inplace=True)
