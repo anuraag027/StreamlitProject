@@ -19,21 +19,10 @@ def load_data(): #Function to load csv data into dataframe
     gk_df = pd.read_csv('Data/Gk_stats_combined_with_positions.csv')#, encoding='utf-8')
     return df,gk_df
 df,gk_df = load_data()
-
-# @st.cache(allow_output_mutation=True)
-# def create_kmeans_model(k=8): #Function to create K Means model
-#     model = KMeans(n_clusters=k)
-#     return model
-
-# @st.cache(allow_output_mutation=True)
-# def get_ideal_k(model,X): #Function to calculate ideal number of clusters
-#     # k is range of number of clusters.
-#     visualizer = KElbowVisualizer(model, k=(1,10), timings= True)
-#     visualizer.fit(X)        # Fit data to visualizer
-#     ideal_k = visualizer.elbow_value_ #Get the elbow value
-#     return ideal_k
-
 @st.cache(allow_output_mutation=True)
+
+st.write(df[df['Player'] == 'Rodri'])
+
 def create_scaler_model(): #Function to create standard scaler model
     return StandardScaler()
 
@@ -43,6 +32,7 @@ st.caption('Works for all positions for players playing in any one of Europe\'s 
 st.caption('Made by: Anuraag Kulkarni   |   Twitter: @Anuraag027')
 
 @st.cache(allow_output_mutation=True,suppress_st_warning=True)
+
 #Function for Radar Plot
 def plot_radar(bkup,df,n):
     
@@ -86,7 +76,6 @@ def plot_radar(bkup,df,n):
     values = []
 
     #Form minimum and maximum values for radar plot
-    # st.write(params)
     for x in params:
         a = min(df[params][x])
         a = a - (a*.1)
