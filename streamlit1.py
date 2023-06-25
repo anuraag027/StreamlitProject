@@ -20,8 +20,8 @@ def load_data(): #Function to load csv data into dataframe
     
     return df
 df = load_data()
-df.reset_index(inplace=True)
-df.drop(['index'],axis=1,inplace=True)
+# df.reset_index(inplace=True)
+# df.drop(['index'],axis=1,inplace=True)
 st.write(df.columns)
 st.write(df['Player'])
 
