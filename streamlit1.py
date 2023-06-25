@@ -58,6 +58,7 @@ def plot_radar(bkup,df,n):
     params = list(df.columns)
     #Remove unwanted columns and keep only metric columns
     params = params[5:-1]
+    st.write(params)
     new_params = []
     for i in range(len(params)):
         new_params.append(params[i].split('(')[0].strip())
@@ -86,9 +87,9 @@ def plot_radar(bkup,df,n):
     values = []
 
     #Form minimum and maximum values for radar plot
-    st.write(params)
+    # st.write(params)
     for x in params:
-        st.write('x',df[x])
+        st.write('x',x)
         # a = min(df[params][x])
         a = min(df[x])
         st.write('a',a)
