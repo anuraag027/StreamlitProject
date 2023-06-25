@@ -228,7 +228,7 @@ with st.sidebar:
 
 
     elif pos == 'Attacking Midfield':
-        df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)',
+        df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)', 'Sh_p90 (shooting_p90)',
                  'Completed Passes_p90 (passing_p90)','Prog Carries_p90 per 100 touches (possession_p90)',
                  'Passes into Final 1/3_p90 (passing_p90)','Prog Carries_p90 (possession_p90)',
                  'Prog Passes_p90 (passing_p90)','Prog Passes_p90 per 50 passes (passing_p90)','Carries into Final 1/3_p90 (possession_p90)',
@@ -264,7 +264,7 @@ with st.sidebar:
         #          'AvgLen_p90 (keepersadv_p90)', 'AvgDist (keepersadv_p90)']]
 
     elif pos == 'Second Striker':
-        df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)', 'Sh_p90 (possession_p90)', 'SoT_p90 (shooting_p90)',
+        df = df[['Player','Squad','Age','Successful Dribbles_p90 (possession_p90)', 'Sh_p90 (shooting_p90)', 'SoT_p90 (shooting_p90)',
                  'Passes into Penalty Area_p90 (passing_p90)','Carries into Penalty Area_p90 (possession_p90)',
                  'xA per KP p90 (passing_p90)','KP p90 per 50 passes (passing_p90)','npxG_p90 (shooting_p90)','SCA_p90 (gca_p90)',
                  'Aerial Win Rate (misc_p90)','Won_p90 (misc_p90)', 'Prog Passes Received_p90 (stats_p90)',
