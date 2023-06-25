@@ -416,7 +416,7 @@ test_dic = {'npxG_p90 (shooting_p90)':'Non Penalty xG per 90',
  'SCA_p90 (gca_p90)' : 'Shot Creating Actions per 90',
  'SoTA_p90 (keepers_p90)' : 'Shots On Target Faced per 90',
  'Off_p90 (misc_p90)' : 'Offsides per 90',
- 'npxG/Sh_p90 (shooting_p90)' : 'Non Penalty xG per Shot, per 90'
+ 'npxG/Sh_p90 (shooting_p90)' : 'Non Penalty xG per Shot, per 90',
  'Def 3rd_p90 (possession_p90)': 'Touches in the Defensive Third per 90', 
  'Mid 3rd_p90 (possession_p90)' : 'Touches in the Middle Third per 90',
  'Att 3rd_p90 (possession_p90)': 'Touches in the Final Third per 90',
