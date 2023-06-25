@@ -24,6 +24,7 @@ def load_data(): #Function to load csv data into dataframe
     # df.drop(['index'],axis=1,inplace=True)
     return df,gk_df
 df,gk_df = load_data()
+st.write(gk_df.columns,len(gk_df.columns))
 # df.reset_index(inplace=True)
 # df.drop(['index'],axis=1,inplace=True)
 # st.write(df.columns)
