@@ -24,6 +24,7 @@ df,gk_df = load_data()
 st.write(df[df['Player'] == 'Rodri'])
 
 
+
 def create_scaler_model(): #Function to create standard scaler model
     return StandardScaler()
 
