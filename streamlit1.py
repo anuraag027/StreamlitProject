@@ -19,7 +19,6 @@ def load_data(): #Function to load csv data into dataframe
     gk_df = pd.read_csv('Data/Gk_stats_combined_with_positions.csv')#, encoding='utf-8')
     return df,gk_df
 df,gk_df = load_data()
-st.write(gk_df.columns,len(gk_df.columns))
 
 # @st.cache(allow_output_mutation=True)
 # def create_kmeans_model(k=8): #Function to create K Means model
