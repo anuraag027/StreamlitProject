@@ -21,7 +21,7 @@ def load_data(): #Function to load csv data into dataframe
 df,gk_df = load_data()
 # @st.cache(allow_output_mutation=True)
 
-st.write(gk_df[gk_df['Player'] == 'Ederson']['TMPosition'])
+# st.write(gk_df[gk_df['Player'] == 'Ederson']['TMPosition'])
 
 def create_scaler_model(): #Function to create standard scaler model
     return StandardScaler()
@@ -131,6 +131,7 @@ with st.sidebar:
 
     #Get the position for that player
     pos = df[df['Player'] == player]['TMPosition'].values[0]
+    st.write(pos)
     
     #GOALKEEPER
     if pos == 'Goalkeeper':
