@@ -259,7 +259,7 @@ with st.sidebar:
                  'Prog Passes_p90 (passing_p90)']]
 
     elif pos == 'Goalkeeper': #
-        df = df[['Player','Squad','Age','Att_p90 (keepersadv_p90)','SoTA_p90 (keepers_p90)', 'Saves_p90 (keepers_p90)','Stp_p90 (keepersadv_p90)',
+        df = df[['Player','Squad','SoTA_p90 (keepers_p90)', 'Saves_p90 (keepers_p90)','Stp_p90 (keepersadv_p90)',
                  '#OPA_p90 (keepersadv_p90)','PSxG+/-_p90 (keepersadv_p90)', 'Cmp_p90 (keepersadv_p90)', 
                  'Att_p90 (keepersadv_p90)', 'Passes Att_p90 (keepersadv_p90)', 'Thr_p90 (keepersadv_p90)',
                  'AvgLen_p90 (keepersadv_p90)', 'AvgDist (keepersadv_p90)']]
