@@ -21,7 +21,7 @@ def load_data(): #Function to load csv data into dataframe
 df,gk_df = load_data()
 @st.cache(allow_output_mutation=True)
 
-# st.write(df[df['Player'] == 'Rodri'])
+st.write(gk_df[gk_df['Player'] == 'Alisson'])
 
 def create_scaler_model(): #Function to create standard scaler model
     return StandardScaler()
