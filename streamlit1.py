@@ -58,7 +58,6 @@ def plot_radar(bkup,df,n):
     params = list(df.columns)
     #Remove unwanted columns and keep only metric columns
     params = params[5:-1]
-    st.write(params)
     new_params = []
     for i in range(len(params)):
         new_params.append(params[i].split('(')[0].strip())
