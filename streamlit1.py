@@ -37,9 +37,9 @@ df,gk_df = load_data()
 def create_scaler_model(): #Function to create standard scaler model
     return StandardScaler()
 
-st.header('Use Machine Learning to Find Players of Similar Profiles')
+st.header('Use Machine Learning to Find Players of Similar Profiles. Updated for the 2022/23 Season.')
 st.caption('Select a player, and my Machine Learning model will suggest similar players.')
-st.caption('Currently works for outfield positions for players playing in any one of Europe\'s Top 5 Leagues - Premier League, La Liga, Seria A, Ligue 1 and Bundesliga.')
+st.caption('Works for all positions for players playing in any one of Europe\'s Top 5 Leagues - Premier League, La Liga, Seria A, Ligue 1 and Bundesliga.')
 st.caption('Made by: Anuraag Kulkarni   |   Twitter: @Anuraag027')
 
 @st.cache(allow_output_mutation=True,suppress_st_warning=True)
