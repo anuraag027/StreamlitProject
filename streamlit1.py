@@ -22,7 +22,7 @@ def load_data(): #Function to load csv data into dataframe
     return df
 df = load_data()
 st.write(df.columns)
-st.write(df['player'])
+st.write(df['Player'])
 
 # @st.cache(allow_output_mutation=True)
 # def create_kmeans_model(k=8): #Function to create K Means model
