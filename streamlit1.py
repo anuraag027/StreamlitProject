@@ -16,15 +16,16 @@ warnings.filterwarnings('ignore')
 @st.cache
 def load_data(): #Function to load csv data into dataframe
     df = pd.read_csv('Data/All_stats_combined_with_positions_22_23.csv', encoding='utf-8')
+    st.write(df.columns)
     df.drop(df[df['TMPosition'] == 'Goalkeeper'].index, inplace=True)
+    st.write(df.columns)
     df.reset_index(inplace=True)
     df.drop(['index'],axis=1,inplace=True)
     return df
 df = load_data()
 # df.reset_index(inplace=True)
 # df.drop(['index'],axis=1,inplace=True)
-st.write(df.columns)
-st.write(df['Player'])
+# st.write(df.columns)
 
 # @st.cache(allow_output_mutation=True)
 # def create_kmeans_model(k=8): #Function to create K Means model
