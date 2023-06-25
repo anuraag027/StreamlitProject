@@ -142,7 +142,6 @@ def plot_radar(bkup,df,n):
 
 # Widget sidebar, "with" notation
 with st.sidebar:
-    st.write(df.columns)
     #Select the player
     player = st.selectbox(
          'Choose Player',
