@@ -142,7 +142,7 @@ with st.sidebar:
     st.write(gk_df[gk_df['Player'] == 'Alisson']['TMPosition'].values[0])
     st.write('end')
     
-    if st.write(gk_df[gk_df['Player'] == 'Ederson']['TMPosition'].values[0]) == st.write(gk_df[gk_df['Player'] == 'Alisson']['TMPosition'].values[0]):
+    if st.write(gk_df[gk_df['Player'] == 'Ederson']['TMPosition'].values[0]) == st.write(gk_df[gk_df['Player'] == 'Alisson']['TMPosition'].values[0]): #AK
         st.write('Equal')
     
     #Filter all players that play in that position
@@ -291,6 +291,8 @@ with st.sidebar:
     
     #Scale all the required features, as some may be absolute values and some may be percentages
     scaler = create_scaler_model()
+    st.write('scaler') #AK
+    st.write(df[df['Player'] == player])
     scaler.fit(df.drop(['Player','Squad','Age'],axis=1))
     scaled_features = scaler.transform(df.drop(['Player','Squad','Age'],axis=1))
     scaled_feat_df = pd.DataFrame(scaled_features,columns=df.columns[3:])
