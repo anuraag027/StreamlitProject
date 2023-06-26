@@ -339,8 +339,6 @@ with st.sidebar:
     #Sort the dataframe according to similarity score
     df = df.sort_values('Similarity Score')
 
-options = st.multiselect('Create your own radar from the list of similar players (Upto 3 players)',df['Player']) #AK
-
 radar_df = df.copy()
 df = df[['Player','Similarity Score']]
 df.reset_index(inplace=True)
