@@ -134,6 +134,7 @@ with st.sidebar:
     
     #GOALKEEPER
     if pos == 'Goalkeeper':
+        st.write('yes') #AK
         df = gk_df.copy()
     
     #Filter all players that play in that position
