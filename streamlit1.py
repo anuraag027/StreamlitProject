@@ -8,23 +8,18 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 import math
 from yellowbrick.cluster import KElbowVisualizer
-
 import warnings
 warnings.filterwarnings('ignore')
 
-# Disable caching
-st.set_option('deprecation.showPyplotGlobalUse', False)
-
 # ADDING CACHE OPTION
-# @st.cache
-# def load_data(): #Function to load csv data into dataframe
-df = pd.read_csv('Data/All_stats_combined_with_positions_22_23.csv', encoding='utf-8')
-gk_df = pd.read_csv('Data/Gk_stats_combined_with_positions.csv', encoding='utf-8')
-    # return df,gk_df
-# df,gk_df = load_data()
+@st.cache
+def load_data(): #Function to load csv data into dataframe
+    df = pd.read_csv('Data/All_stats_combined_with_positions_22_23.csv', encoding='utf-8')
+    gk_df = pd.read_csv('Data/Gk_stats_combined_with_positions.csv', encoding='utf-8')
+    return df,gk_df
+df,gk_df = load_data()
+
 # @st.cache(allow_output_mutation=True)
-# st.write(gk_df[gk_df['Player'] == 'Ederson']['TMPosition'])
-# @st.cache
 def create_scaler_model(): #Function to create standard scaler model
     return StandardScaler()
 
