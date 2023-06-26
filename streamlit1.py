@@ -134,7 +134,8 @@ with st.sidebar:
         df = gk_df.copy()
 
     #Remove inf value columns from df
-    df = df.replace([np.inf, -np.inf], np.nan).dropna(axis=1)
+    inf_columns = df.columns[df.isin([np.inf, -np.inf]).any()]
+    df = df.drop(inf_columns, axis=1)
     
     #Filter all players that play in that position
 #     df = df[df['TMPosition'] == pos]
