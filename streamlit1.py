@@ -422,7 +422,7 @@ test_dic = {'npxG_p90 (shooting_p90)':'Non Penalty xG per 90',
  'Att Pen_p90 (possession_p90)': 'Touches in the Penalty Area per 90',
  'Live_p90 (possession_p90)': 'Touches in Possession (excl dead balls) per 90',}
 
-st.caption('The lower the similarity score, the higher the similarity between the players. A similarity score of above 4.5 should be taken with a pinch of salt.')
+st.caption('The lower the similarity score, the higher the similarity between the players. A similarity score of over 4 should be taken with a pinch of salt.')
     
 st.subheader('Description for Metrics Used')
 
