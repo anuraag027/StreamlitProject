@@ -131,6 +131,7 @@ with st.sidebar:
 
     #Get the position for that player
     pos = df[df['Player'] == player]['TMPosition'].values[0]
+    st.write('\'',pos,'\'') #AK
     
     #GOALKEEPER
     if pos == 'Goalkeeper':
