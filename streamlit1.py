@@ -151,7 +151,7 @@ with st.sidebar:
         st.write(player,"plays at position: Striker/Second Striker")
     else:
         df = df[df['TMPosition'] == pos]
-        st.write(player,"plays at position:",pos)
+        st.write(player,"plays at position (unknown):",pos) #AK
     
     #Age slider
     start_age, end_age = st.slider(
