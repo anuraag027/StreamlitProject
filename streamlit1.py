@@ -98,7 +98,7 @@ def plot_radar(bkup,df,n):
 
     fig,ax = radar.plot_radar(ranges=ranges,params=new_params,values=values,
                              radar_color=colors_list,
-                             alphas=alpha_list,endnote=endnote,show_values=False
+                             alphas=alpha_list,endnote=endnote,show_values=False,
                              compare=True)
     
     #Get player name with color used for them in bracket
