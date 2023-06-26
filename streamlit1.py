@@ -137,9 +137,11 @@ with st.sidebar:
         st.write('yes') #AK
         df = gk_df.copy()
 
+    st.write('start')
     st.write(gk_df[gk_df['Player'] == 'Ederson']['TMPosition'].values[0]) #AK
     st.write(gk_df[gk_df['Player'] == 'Alisson']['TMPosition'].values[0])
-
+    st.write('end')
+    
     if st.write(gk_df[gk_df['Player'] == 'Ederson']['TMPosition'].values[0]) == st.write(gk_df[gk_df['Player'] == 'Alisson']['TMPosition'].values[0]):
         St.write('Equal')
     
