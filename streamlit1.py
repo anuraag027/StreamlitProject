@@ -444,7 +444,7 @@ for ele in try_list:
 #Acknowledgements
 st.caption('Names of players are as taken as provided by Opta on FBRef.com')
 st.caption('Data has been taken from FBRef (Opta): https://fbref.com/en/')
-st.caption('Player positions as defined by Jase: https://twitter.com/jaseziv/status/1520148594866913280?s=20&t=gczD9hyTCCHCU81w8-EBYw')
+st.caption('Player positions as defined by Jase (@jaseziv on Twitter): https://twitter.com/jaseziv/status/1520148594866913280?s=20&t=gczD9hyTCCHCU81w8-EBYw')
 st.caption('Feel free to reach out to me on Twitter via DMs if you have any questions or if you face any issues with the app.')
 st.caption('This app only takes publicly available metrics to find similarities. This will not be 100% accurate so please DO NOT use the results as conclusive evidence of player profiles.')
-st.caption('If you like my work, check out my articles on: https://thebeautifulgamereviewed.blogspot.com/')
+st.caption('Reach out to me on Twitter for any questions/feedback/comments: https://twitter.com/Anuraag027)
