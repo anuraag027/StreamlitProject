@@ -16,7 +16,7 @@ warnings.filterwarnings('ignore')
 @st.cache
 def load_data(): #Function to load csv data into dataframe
     df = pd.read_csv('Data/All_stats_combined_with_positions_22_23.csv', encoding='utf-8')
-    gk_df = pd.read_csv('Data/Gk_stats_combined_with_positions.csv')#, encoding='utf-8')
+    gk_df = pd.read_csv('Data/Gk_stats_combined_with_positions.csv', encoding='utf-8')
     return df,gk_df
 df,gk_df = load_data()
 # @st.cache(allow_output_mutation=True)
