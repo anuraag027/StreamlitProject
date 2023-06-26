@@ -12,6 +12,9 @@ from yellowbrick.cluster import KElbowVisualizer
 import warnings
 warnings.filterwarnings('ignore')
 
+# Disable caching
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 # ADDING CACHE OPTION
 # @st.cache
 # def load_data(): #Function to load csv data into dataframe
