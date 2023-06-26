@@ -20,7 +20,6 @@ def load_data(): #Function to load csv data into dataframe
     return df,gk_df
 df,gk_df = load_data()
 # @st.cache(allow_output_mutation=True)
-st.write(gk_df) #AK
 # st.write(gk_df[gk_df['Player'] == 'Ederson']['TMPosition'])
 
 def create_scaler_model(): #Function to create standard scaler model
@@ -131,24 +130,11 @@ with st.sidebar:
 
     #Get the position for that player
     pos = df[df['Player'] == player]['TMPosition'].values[0]
-    st.write('\'',pos,'\'') #AK
     
     #GOALKEEPER
     if pos == 'Goalkeeper':
-        st.write('yes') #AK
         df = gk_df.copy()
 
-    st.write('start')
-    st.write(gk_df[gk_df['Player'] == 'Ederson']['TMPosition'].values[0]) #AK
-    st.write(gk_df[gk_df['Player'] == 'Alisson']['TMPosition'].values[0])
-    st.write('end')
-    
-    if df[df['Player'] == 'Ederson']['TMPosition'].values[0] == df[df['Player'] == 'Alisson']['TMPosition'].values[0]: #AK
-        st.write('Equal')
-
-    if pos == df[df['Player'] == 'Alisson']['TMPosition'].values[0]: #AK
-        st.write('2 Equal')
-    
     #Filter all players that play in that position
 #     df = df[df['TMPosition'] == pos]
 #     if 'WingBack' in pos:
@@ -166,7 +152,6 @@ with st.sidebar:
         df = df[df['TMPosition'] == pos]
         st.write(player,"plays at position:",pos)
 
-    st.write(df[df['Player'] == player]) #AK
     #Age slider
     start_age, end_age = st.slider(
      'Select a range of age',
@@ -295,8 +280,6 @@ with st.sidebar:
     
     #Scale all the required features, as some may be absolute values and some may be percentages
     scaler = create_scaler_model()
-    st.write('scaler') #AK
-    st.write(df[df['Player'] == player])
     scaler.fit(df.drop(['Player','Squad','Age'],axis=1))
     scaled_features = scaler.transform(df.drop(['Player','Squad','Age'],axis=1))
     scaled_feat_df = pd.DataFrame(scaled_features,columns=df.columns[3:])
