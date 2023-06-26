@@ -145,6 +145,9 @@ with st.sidebar:
     
     if st.write(df[df['Player'] == 'Ederson']['TMPosition'].values[0]) == st.write(df[df['Player'] == 'Alisson']['TMPosition'].values[0]): #AK
         st.write('Equal')
+
+    if st.write(pos) == st.write(df[df['Player'] == 'Alisson']['TMPosition'].values[0]): #AK
+        st.write('2 Equal')
     
     #Filter all players that play in that position
 #     df = df[df['TMPosition'] == pos]
