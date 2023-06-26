@@ -136,6 +136,12 @@ with st.sidebar:
     if pos == 'Goalkeeper':
         st.write('yes') #AK
         df = gk_df.copy()
+
+    st.write(gk_df[gk_df['Player'] == 'Ederson']['TMPosition'].values[0]) #AK
+    st.write(gk_df[gk_df['Player'] == 'Alisson']['TMPosition'].values[0])
+
+    if st.write(gk_df[gk_df['Player'] == 'Ederson']['TMPosition'].values[0]) == st.write(gk_df[gk_df['Player'] == 'Alisson']['TMPosition'].values[0]):
+        St.write('Equal')
     
     #Filter all players that play in that position
 #     df = df[df['TMPosition'] == pos]
