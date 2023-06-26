@@ -132,10 +132,6 @@ with st.sidebar:
     #GOALKEEPER
     if pos == 'Goalkeeper':
         df = gk_df.copy()
-
-    #Remove inf value columns from df
-    inf_columns = df.columns[df.isin([np.inf, -np.inf]).any()]
-    df = df.drop(inf_columns, axis=1)
     
     #Filter all players that play in that position
 #     df = df[df['TMPosition'] == pos]
