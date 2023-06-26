@@ -143,7 +143,7 @@ with st.sidebar:
     st.write('end')
     
     if st.write(gk_df[gk_df['Player'] == 'Ederson']['TMPosition'].values[0]) == st.write(gk_df[gk_df['Player'] == 'Alisson']['TMPosition'].values[0]):
-        St.write('Equal')
+        st.write('Equal')
     
     #Filter all players that play in that position
 #     df = df[df['TMPosition'] == pos]
